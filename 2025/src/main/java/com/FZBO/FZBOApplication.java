@@ -1,5 +1,7 @@
 package com.FZBO;
 
+import com.FZBO.models.ERole;
+import com.FZBO.models.Role;
 import com.FZBO.repos.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
