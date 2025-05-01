@@ -1,4 +1,8 @@
 package com.FZBO.repos;
 
-public interface ImageRepository {
+import com.FZBO.models.Image;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ImageRepository extends CrudRepository<Image, Integer> {
+    Image findByName(String fileName);
 }
