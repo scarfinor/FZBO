@@ -18,7 +18,6 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-    // Save to "uploads" folder
     private final String FOLDER_PATH = System.getProperty("user.dir") + File.separator + "uploads" + File.separator;
 
     private void checkUploadDirExists() {
