@@ -1,4 +1,4 @@
-package com.FZBO.security;
+package com.FZBO.security.configurations;
 
 import com.FZBO.security.jwts.AuthEntryPoint;
 import com.FZBO.security.jwts.AuthTokenFilter;

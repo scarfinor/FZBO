@@ -1,4 +1,4 @@
-package com.FZBO.security.jwts;
+package com.FZBO.security.configurations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
