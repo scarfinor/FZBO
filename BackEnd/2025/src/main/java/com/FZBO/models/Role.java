@@ -14,8 +14,6 @@ public class Role {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    @NotNull(message = "Role must not be null")
-    @NotBlank(message = "Role must not be blank")
     private ERole name;
 
     public Role() {}

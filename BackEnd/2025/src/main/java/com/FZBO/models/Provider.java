@@ -13,8 +13,6 @@ public class Provider {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    @NotNull(message = "Provider must not be null")
-    @NotBlank(message = "Provider must not be blank")
     private EProvider name;
 
     public Provider() {}
