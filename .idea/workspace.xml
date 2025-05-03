@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bae67a63-55c0-44ea-99ee-454586a0aff8" name="Changes" comment="ProviderRepository.java (query update)&#10;JWTUtils.java (update jwt builder) still depreciated needs work&#10;ImageController.java (dependency injection/ uploadImage(), downloadImage() and downloadUserImage())&#10;AuthController.java (set provider on sign up to FZBO)&#10;build.gradle (update dependency)&#10;application.properties (update)&#10;.gitignore (update)">
-      <change beforePath="$PROJECT_DIR$/BackEnd/daemon/8.13/daemon-8608.out.log" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/daemon/8.13/daemon-8608.out.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/2025.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/2025.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +86,11 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "last_opened_file_path": "/home/richard/projects/Projects",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/richard/projects/FZBO/BackEnd/2025/src/test/java",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
@@ -169,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746239897134</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ProviderRepository.java (query update)&#10;JWTUtils.java (update jwt builder) still depreciated needs work&#10;ImageController.java (dependency injection/ uploadImage(), downloadImage() and downloadUserImage())&#10;AuthController.java (set provider on sign up to FZBO)&#10;build.gradle (update dependency)&#10;application.properties (update)&#10;.gitignore (update)">
+      <option name="closed" value="true" />
+      <created>1746240128853</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746240128853</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
