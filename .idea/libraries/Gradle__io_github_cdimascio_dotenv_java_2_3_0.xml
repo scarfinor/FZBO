@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: io.github.cdimascio:dotenv-java:2.3.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.github.cdimascio" artifactId="dotenv-java" version="2.3.0" baseVersion="2.3.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/BackEnd/caches/modules-2/files-2.1/io.github.cdimascio/dotenv-java/2.3.0/4611d6d63e2808e424a748d29001d2893cae5d50/dotenv-java-2.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
