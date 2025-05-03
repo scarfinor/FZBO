@@ -96,7 +96,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
             Provider newProvider = providerRepository.findByName(provider)
                     .orElseGet(() -> providerRepository.save(new Provider(provider)));
 
-            Role userRole = roleRepository.findByName(ERole.USER)
+            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             Set<Role> roles = new HashSet<>();
             roles.add(userRole);
