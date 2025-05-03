@@ -1,11 +1,10 @@
 package com.FZBO.controllers;
 
-import com.FZBO.models.ERole;
-import com.FZBO.models.Role;
-import com.FZBO.models.User;
+import com.FZBO.models.*;
 import com.FZBO.payloads.requests.SignInRequest;
 import com.FZBO.payloads.requests.SignUpRequest;
 import com.FZBO.payloads.responses.MessageResponse;
+import com.FZBO.repos.ProviderRepository;
 import com.FZBO.repos.RoleRepository;
 import com.FZBO.repos.UserRepository;
 import com.FZBO.security.jwts.JWTUtils;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,6 +34,9 @@ public class AuthController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ProviderRepository providerRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -118,6 +121,10 @@ public class AuthController {
         }
 
         user.setRoles(roles);
+        Set<Provider> userProvider = Collections.singleton(providerRepository.findByName(EProvider.FZBO));
+        user.setProviders(userProvider);
+        System.out.println(user);
+        System.out.print(userProvider);
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

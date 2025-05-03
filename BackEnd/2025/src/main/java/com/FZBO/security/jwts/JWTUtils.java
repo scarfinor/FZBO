@@ -26,8 +26,7 @@ public class JWTUtils {
     public String generateJwtToken(Authentication authentication) {
         Object principal = authentication.getPrincipal();
 
-        if (principal instanceof UserDetailsImpl) {
-            UserDetailsImpl userPrincipal = (UserDetailsImpl) principal;
+        if (principal instanceof UserDetailsImpl userPrincipal) {
             return Jwts.builder()
                     .setSubject(userPrincipal.getUsername())
                     .setIssuedAt(new Date())

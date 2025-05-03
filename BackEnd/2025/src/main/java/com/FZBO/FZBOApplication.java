@@ -36,13 +36,13 @@ public class FZBOApplication {
 	@Bean
 	CommandLineRunner initProviders(ProviderRepository providerRepository){
 		return args -> {
-			if (providerRepository.findByName(EProvider.GITHUB).isEmpty()) {
+			if (providerRepository.findByNameOpt(EProvider.GITHUB).isEmpty()) {
 				providerRepository.save(new Provider(EProvider.GITHUB));
 			}
-			if (providerRepository.findByName(EProvider.GOOGLE).isEmpty()) {
+			if (providerRepository.findByNameOpt(EProvider.GOOGLE).isEmpty()) {
 				providerRepository.save(new Provider(EProvider.GOOGLE));
 			}
-			if (providerRepository.findByName(EProvider.FZBO).isEmpty()) {
+			if (providerRepository.findByNameOpt(EProvider.FZBO).isEmpty()) {
 				providerRepository.save(new Provider(EProvider.FZBO));
 			}
 		};

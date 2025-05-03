@@ -79,7 +79,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
             user = existingUserOpt.get();
             user.setFirstLogin(false);
 
-            providerRepository.findByName(provider).ifPresent(p -> {
+            providerRepository.findByNameOpt(provider).ifPresent(p -> {
                 user.getProviders().add(p);
             });
 
@@ -93,7 +93,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
                 email = username + "@FZBO.com";
             }
 
-            Provider newProvider = providerRepository.findByName(provider)
+            Provider newProvider = providerRepository.findByNameOpt(provider)
                     .orElseGet(() -> providerRepository.save(new Provider(provider)));
 
             Role userRole = roleRepository.findByName(ERole.USER)
