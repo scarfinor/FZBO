@@ -10,11 +10,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import io.github.cdimascio.dotenv.Dotenv;
 
 @SpringBootApplication
 public class FZBOApplication {
 
 	public static void main(String[] args) {
+		Dotenv dotenv = Dotenv.load();
+		System.setProperty("GOOGLE_CLIENT_ID", dotenv.get("GOOGLE_CLIENT_ID"));
+		System.setProperty("GOOGLE_CLIENT_SECRET", dotenv.get("GOOGLE_CLIENT_SECRET"));
 		SpringApplication.run(FZBOApplication.class, args);
 	}
 
@@ -36,13 +40,13 @@ public class FZBOApplication {
 	@Bean
 	CommandLineRunner initProviders(ProviderRepository providerRepository){
 		return args -> {
-			if (providerRepository.findByNameOpt(EProvider.GITHUB).isEmpty()) {
+			if (providerRepository.findByName(EProvider.GITHUB).isEmpty()) {
 				providerRepository.save(new Provider(EProvider.GITHUB));
 			}
-			if (providerRepository.findByNameOpt(EProvider.GOOGLE).isEmpty()) {
+			if (providerRepository.findByName(EProvider.GOOGLE).isEmpty()) {
 				providerRepository.save(new Provider(EProvider.GOOGLE));
 			}
-			if (providerRepository.findByNameOpt(EProvider.FZBO).isEmpty()) {
+			if (providerRepository.findByName(EProvider.FZBO).isEmpty()) {
 				providerRepository.save(new Provider(EProvider.FZBO));
 			}
 		};

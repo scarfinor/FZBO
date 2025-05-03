@@ -121,10 +121,13 @@ public class AuthController {
         }
 
         user.setRoles(roles);
-        Set<Provider> userProvider = Collections.singleton(providerRepository.findByName(EProvider.FZBO));
-        user.setProviders(userProvider);
+        Provider provider = providerRepository.findByName(EProvider.FZBO)
+                .orElseThrow(() -> new RuntimeException("Error: Provider not found."));
+
+        Set<Provider> userProviders = Collections.singleton(provider);
+        user.setProviders(userProviders);
         System.out.println(user);
-        System.out.print(userProvider);
+        System.out.print(userProviders);
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

@@ -9,7 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProviderRepository extends CrudRepository<Provider, Integer> {
-    Optional<Provider> findByNameOpt(EProvider name);
-
-    Provider findByName(EProvider name);
+    Optional<Provider> findByName(EProvider name);
 }
