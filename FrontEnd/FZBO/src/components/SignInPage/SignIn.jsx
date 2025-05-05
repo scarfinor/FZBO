@@ -43,7 +43,7 @@ export default function SignIn() {
                 if (response.status === 200) {
                     const { username, firstName, lastName } = response.data;
                     localStorage.setItem("user", JSON.stringify({ username, firstName, lastName }));
-                    navigate("/Home");
+                    navigate("/SignInSuccess");
                 }
             } catch (error) {
                 console.error("Login failed:", error.response?.data || error.message);
