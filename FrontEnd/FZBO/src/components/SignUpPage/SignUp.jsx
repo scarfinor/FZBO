@@ -14,7 +14,7 @@ export default function SignUp() {
         password: Yup.string()
             .required("Password is required")
             .min(3, "Password must be at least 3 characters"),
-        verifiedPassword: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match"),
+        verifiedPassword: Yup.string().required("Verify your password").oneOf([Yup.ref("password"), null], "Passwords must match"),
         acceptTerms: Yup.bool().oneOf([true], "You must accept the terms and conditions"),
         acceptPrivacyPolicy: Yup.bool().oneOf([true], "You must accept the privacy policy")
     });

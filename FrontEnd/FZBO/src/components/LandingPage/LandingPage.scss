@@ -1,0 +1,41 @@
+.landingPage {
+  text-align: center;
+
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6rem;
+    margin-top: 2rem;
+    padding-right: 4rem;
+  }
+
+  .signIn,
+  .signUp {
+    width: 40%;
+    min-width: 300px;
+    box-sizing: border-box;
+
+    @media (max-width: 420px) {
+      padding-right: 1rem; // reduce padding to prevent overflow
+    }
+
+    @media (max-width: 360px) {
+      padding-right: 4rem;
+    }
+  }
+
+  .welcome-text {
+    font-size: 600%;
+
+
+    @media (max-width: 420px) {
+      padding-right: 1rem; // reduce padding to prevent overflow
+    }
+
+    @media (max-width: 360px) {
+      padding-right: 4rem;
+    }
+  }
+}
