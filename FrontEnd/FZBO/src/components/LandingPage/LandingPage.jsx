@@ -13,7 +13,6 @@ export default function LandingPage() {
             </div>
 
             <div className="signUp">
-            <p> Don't have an FBZO Account?</p>
             <div>
                 <SignUp />
             </div>
