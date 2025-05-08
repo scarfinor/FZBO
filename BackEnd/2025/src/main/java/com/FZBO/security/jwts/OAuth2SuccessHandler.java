@@ -87,7 +87,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
             String jwt = generateJwt(authentication);
             setJwtInCookies(response, jwt);
-            response.sendRedirect("http://localhost:3000/home");
+            response.sendRedirect("http://localhost:5173/SignInSuccess");
         } else {
             if (email == null) {
                 email = username + "@FZBO.com";
@@ -114,7 +114,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
             String jwt = generateJwt(authentication);
             setJwtInCookies(response, jwt);
-            response.sendRedirect("http://localhost:3000/editProfile");
+            response.sendRedirect("http://localhost:5173/SignInSuccess");
         }
     }
 
