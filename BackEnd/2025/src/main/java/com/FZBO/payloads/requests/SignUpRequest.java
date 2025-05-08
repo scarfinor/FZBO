@@ -12,8 +12,8 @@ public class SignUpRequest {
     private String verifiedPassword;
     private Set<String> role;
     private Set<String> provider = Collections.singleton("FZBO");
-    private Boolean acceptTerms;
-    private Boolean acceptPrivacyPolicy;
+    private Boolean acceptTerms = true;
+    private Boolean acceptPrivacyPolicy = true;
 
     public Boolean getAcceptPrivacyPolicy() {
         return acceptPrivacyPolicy;

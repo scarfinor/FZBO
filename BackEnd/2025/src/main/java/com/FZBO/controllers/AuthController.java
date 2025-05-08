@@ -126,6 +126,8 @@ public class AuthController {
 
         Set<Provider> userProviders = Collections.singleton(provider);
         user.setProviders(userProviders);
+        user.setAcceptPrivacyPolicy(signUpRequest.getAcceptPrivacyPolicy());
+        user.setAcceptTerms(signUpRequest.getAcceptTerms());
         System.out.println(user);
         System.out.print(userProviders);
         userRepository.save(user);
