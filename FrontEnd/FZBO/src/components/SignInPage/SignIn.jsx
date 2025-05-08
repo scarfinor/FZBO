@@ -41,7 +41,7 @@ export default function SignIn() {
                 );
 
                 if (response.status === 200) {
-                    const { username, firstName, lastName } = response.data;
+                    const { username, firstName, lastName } = signInRequest;
                     localStorage.setItem("user", JSON.stringify({ username, firstName, lastName }));
                     navigate("/SignInSuccess");
                 }
