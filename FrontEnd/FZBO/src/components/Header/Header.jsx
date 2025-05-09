@@ -21,7 +21,7 @@ export default function Header() {
                 <div className="div-logo">
                     <NavLink to="/">
                         <IoIosHome />
-                        Landing Page
+                        FZBO
                     </NavLink>
                 </div>
                 <div className="hamburger-menu" onClick={toggleMenu}>

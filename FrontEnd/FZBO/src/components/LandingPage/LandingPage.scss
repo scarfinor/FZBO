@@ -1,41 +1,39 @@
 .landingPage {
   text-align: center;
+  padding: 1rem;
 
   .auth-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 6rem;
-    margin-top: 2rem;
-    padding-right: 4rem;
+    gap: 1.6rem;
+    margin-top: .5rem;
+    padding: .5rem;
   }
 
-  .signIn,
   .signUp {
-    width: 40%;
-    min-width: 300px;
-    box-sizing: border-box;
+    margin-top: -6rem;
+  }
 
-    @media (max-width: 420px) {
-      padding-right: 1rem; // reduce padding to prevent overflow
-    }
 
-    @media (max-width: 360px) {
-      padding-right: 4rem;
-    }
+  .signUp a {
+    color: #0d77fa;
+    font-size: 1.1rem;
+    text-decoration: none;
+    align-items: center;
+    transition: color 0.3s ease;
+    padding: .5rem;
+  }
+
+  .signUp a:hover {
+    color: #ffffff;
   }
 
   .welcome-text {
-    font-size: 600%;
-
-
-    @media (max-width: 420px) {
-      padding-right: 1rem; // reduce padding to prevent overflow
-    }
-
-    @media (max-width: 360px) {
-      padding-right: 4rem;
-    }
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: bold;
+    color: #0d77fa;
+    margin-bottom: -2rem;
+    word-break: break-word;
   }
 }

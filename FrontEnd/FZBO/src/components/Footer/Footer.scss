@@ -1,10 +1,11 @@
 footer {
-  height: 100px;
-  background: linear-gradient(135deg, #000000, #c0c0c0, #1f3d61);
+  height: 4.5rem;
   position: sticky;
   bottom: 0;
   width: 100%;
-  box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.2);
+  background-color: #1C3458;
+  box-shadow: 0 2px 15px rgba(0, 0, 900, 0.3);
+  z-index: 100;
 }
 
 .footer-container {
@@ -14,22 +15,22 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 100%;
+  padding: 0 1rem;
 }
 
-.footer-dashboard {
+.footer-landing {
   display: flex;
   align-items: center;
-  color: white;
+  color: #0d77fa;
   font-size: 1.5rem;
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.footer-dashboard:hover {
-  transform: scale(1.1);
-  color: #56759e;
+.footer-landing:hover {
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 768px) {
