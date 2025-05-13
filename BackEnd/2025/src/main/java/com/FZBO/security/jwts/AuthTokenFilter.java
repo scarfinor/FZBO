@@ -17,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+@Component
 public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JWTUtils jwtUtils;
@@ -46,10 +47,16 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 logger.info("User authenticated: {}", username);
             } else {
-                logger.warn("JWT token is missing or invalid.");
+                logger.warn("JWT token is missing, expired, or invalid.");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("JWT token is expired or invalid.");
+                return;
             }
         } catch (Exception e) {
             logger.error("Error in authentication filter: {}", e.getMessage());
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().write("Authentication failed.");
+            return;
         }
         filterChain.doFilter(request, response);
     }
