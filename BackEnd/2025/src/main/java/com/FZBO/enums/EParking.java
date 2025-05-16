@@ -1,4 +1,4 @@
-package com.FZBO.models;
+package com.FZBO.enums;
 
 public enum EParking {
 }

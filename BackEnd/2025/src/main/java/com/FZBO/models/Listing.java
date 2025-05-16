@@ -1,5 +1,6 @@
 package com.FZBO.models;
 
+import com.FZBO.enums.*;
 import jakarta.persistence.*;
 
 import java.util.HashSet;

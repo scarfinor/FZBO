@@ -1,6 +1,6 @@
 package com.FZBO.repos;
 
-import com.FZBO.models.ERole;
+import com.FZBO.enums.ERole;
 import com.FZBO.models.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

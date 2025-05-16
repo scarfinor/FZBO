@@ -1,8 +1,7 @@
 package com.FZBO.models;
 
+import com.FZBO.enums.ERole;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "roles")

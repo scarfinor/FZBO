@@ -1,5 +1,7 @@
 package com.FZBO.security.jwts;
 
+import com.FZBO.enums.EProvider;
+import com.FZBO.enums.ERole;
 import com.FZBO.models.*;
 import com.FZBO.repos.ProviderRepository;
 import com.FZBO.repos.RoleRepository;

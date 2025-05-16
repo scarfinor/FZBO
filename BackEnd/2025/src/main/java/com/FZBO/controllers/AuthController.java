@@ -1,5 +1,7 @@
 package com.FZBO.controllers;
 
+import com.FZBO.enums.EProvider;
+import com.FZBO.enums.ERole;
 import com.FZBO.models.*;
 import com.FZBO.payloads.requests.SignInRequest;
 import com.FZBO.payloads.requests.SignUpRequest;

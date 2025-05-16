@@ -1,6 +1,6 @@
 package com.FZBO.repos;
 
-import com.FZBO.models.EProvider;
+import com.FZBO.enums.EProvider;
 import com.FZBO.models.Provider;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

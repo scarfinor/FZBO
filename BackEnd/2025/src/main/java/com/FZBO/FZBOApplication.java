@@ -1,7 +1,7 @@
 package com.FZBO;
 
-import com.FZBO.models.EProvider;
-import com.FZBO.models.ERole;
+import com.FZBO.enums.EProvider;
+import com.FZBO.enums.ERole;
 import com.FZBO.models.Provider;
 import com.FZBO.models.Role;
 import com.FZBO.repos.ProviderRepository;
