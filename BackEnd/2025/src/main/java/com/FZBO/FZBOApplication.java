@@ -37,6 +37,12 @@ public class FZBOApplication {
 			if (roleRepository.findByName(ERole.ROLE_ADMIN).isEmpty()) {
 				roleRepository.save(new Role(ERole.ROLE_ADMIN));
 			}
+			if (roleRepository.findByName(ERole.ROLE_BUYER).isEmpty()) {
+				roleRepository.save(new Role(ERole.ROLE_BUYER));
+			}
+			if (roleRepository.findByName(ERole.ROLE_SELLER).isEmpty()) {
+				roleRepository.save(new Role(ERole.ROLE_SELLER));
+			}
 		};
 	}
 
