@@ -1,4 +1,16 @@
 package com.FZBO.enums;
 
 public enum EParking {
+    STREET_PARKING,
+    ATTACHED_GARAGE,
+    DETACHED_GARAGE,
+    DRIVEWAY,
+    CARPORT,
+    INDOOR_PARKING,
+    BREEZEWAY,
+    PARKADE,
+    UNDERGROUND,
+    OUTDOOR_STALL,
+    PARKING_PAD,
+    PARKING_GARAGE
 }
