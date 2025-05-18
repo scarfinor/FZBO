@@ -20,6 +20,7 @@ public class Listing {
     @GeneratedValue
     private int id;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private Location location;
 
     private short beds;

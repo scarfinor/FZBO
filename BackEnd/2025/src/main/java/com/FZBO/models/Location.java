@@ -1,13 +1,16 @@
 package com.FZBO.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
 @Table(name = "locations")
 public class Location {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @NotBlank(message = "Street address must not be blank")
     private String streetAddress;
@@ -25,5 +28,5 @@ public class Location {
     private String municipality;
 
     @NotBlank(message = "Zip Code must not be blank")
-    private short zipCode;
+    private int zipCode;
 }
