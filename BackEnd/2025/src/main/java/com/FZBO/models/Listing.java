@@ -3,6 +3,7 @@ package com.FZBO.models;
 import com.FZBO.enums.*;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
 @Table(
         name = "listings",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = "address"),
+                @UniqueConstraint(columnNames = "location"),
         }
 )
 public class Listing {
@@ -19,7 +20,7 @@ public class Listing {
     @GeneratedValue
     private int id;
 
-    private String address;
+    private Location location;
 
     private short beds;
 
@@ -27,7 +28,11 @@ public class Listing {
 
     private EStyle style;
 
-    private String buildDate;
+    private LocalDate buildDate;
+
+    private Boolean isActive;
+
+    private LocalDate expectedActive;
 
     private short LivingAreaSqFt;
 
@@ -47,6 +52,8 @@ public class Listing {
 
     private final Set<EAppliance> appliances = new HashSet<>();
 
+    private String remarks;
+
     @ManyToMany
     private Set<Image> photos = new HashSet<>();
 
@@ -62,12 +69,12 @@ public class Listing {
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public short getBeds() {
@@ -94,11 +101,11 @@ public class Listing {
         this.style = style;
     }
 
-    public String getBuildDate() {
+    public LocalDate getBuildDate() {
         return buildDate;
     }
 
-    public void setBuildDate(String buildDate) {
+    public void setBuildDate(LocalDate buildDate) {
         this.buildDate = buildDate;
     }
 
@@ -176,5 +183,29 @@ public class Listing {
 
     public void setPhotoURLs(Set<String> photoURLs) {
         this.photoURLs = photoURLs;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public LocalDate getExpectedActive() {
+        return expectedActive;
+    }
+
+    public void setExpectedActive(LocalDate expectedActive) {
+        this.expectedActive = expectedActive;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }
