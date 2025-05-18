@@ -1,4 +1,20 @@
 package com.FZBO.enums;
 
 public enum EAppliance {
+    MICROWAVE,
+    REFRIGERATOR,
+    WASHING_MACHINE,
+    DISHWASHER,
+    OVEN,
+    TELEVISION,
+    COFFEE_MAKER,
+    KITCHEN_STOVE,
+    AIR_CONDITIONING,
+    CEILING_FAN,
+    DRYER,
+    FREEZER,
+    DEEP_FREEZER,
+    KITCHEN_CHIMNEY,
+    TRASH_COMPACTOR,
+    STEREO_SYSTEM
 }
