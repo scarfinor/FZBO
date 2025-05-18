@@ -1,4 +1,22 @@
 package com.FZBO.enums;
 
 public enum EAmenity {
+    FIREPLACE,
+    HOME_THEATER,
+    GYM,
+    JACUZZI,
+    SMART_HOME,
+    HIGH_SPEED_INTERNET,
+    ADDITIONAL_STORAGE,
+    WALKABLE_NEIGHBORHOOD,
+    SWIMMING_POOL,
+    DECK,
+    PATIO,
+    SCREENED_IN_PORCH,
+    PLAYGROUND,
+    COMMUNITY_GARDEN,
+    OUT_DOOR_KITCHEN,
+    FIREPIT,
+    SPA,
+    CLUB_HOUSE
 }
