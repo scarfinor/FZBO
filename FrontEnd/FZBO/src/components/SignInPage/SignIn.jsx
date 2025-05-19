@@ -42,7 +42,7 @@ export default function SignIn() {
 
                 if (response.status === 200) {
                     const { username, firstName, lastName } = signInRequest;
-                    localStorage.setItem("user", JSON.stringify({ username, firstName, lastName }));
+                    localStorage.setItem("fzbo_user", JSON.stringify({ username, firstName, lastName }));
                     navigate("/SignInSuccess");
                 }
             } catch (error) {

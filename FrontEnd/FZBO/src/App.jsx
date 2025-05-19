@@ -8,6 +8,7 @@ import SignUpSuccess from "./components/SignUpPage/SignUpSuccess.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import LogoutSuccess from "./components/Logout/LogoutSuccess.jsx";
+import ListingForm from "./components/ListingPage/ListingForm.jsx";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/SignInSuccess" element={<SignInSuccess />} />
             <Route path="/SignUpSuccess" element={<SignUpSuccess />} />
             <Route path="/LogoutSuccess" element={<LogoutSuccess />} />
+            <Route path="/ListingForm" element={<ListingForm />} />
         </Routes>
         <Footer />
     </Router>

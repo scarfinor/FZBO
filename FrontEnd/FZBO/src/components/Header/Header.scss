@@ -14,6 +14,7 @@ nav {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  gap: 10rem;
   justify-content: space-between;
   align-items: center;
   height: 100px;
@@ -27,7 +28,6 @@ nav {
   color: #0d77fa;
   display: flex;
   align-items: center;
-  gap: 1px;
   font-size: 2rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -51,7 +51,7 @@ nav {
   font-size: 1.1rem;
   text-decoration: none;
   display: flex;
-  gap: 8px;
+  gap: 3px;
   align-items: center;
   transition: color 0.3s ease;
 }
@@ -139,6 +139,8 @@ nav {
 
   .hamburger-menu {
     display: block;
+    margin-right: 2rem;
+    margin-left: 10rem;
   }
 
   .side-menu {
@@ -150,16 +152,9 @@ nav {
   }
 }
 
-@media only screen and (min-width: 769px) {
-  .side-menu {
-    display: none;
-  }
-
-  .div-link {
-    display: flex;
-  }
-
+@media only screen and (max-width: 368px) {
   .hamburger-menu {
-    display: none;
+    display: block;
+    margin-right: 2rem;
   }
 }

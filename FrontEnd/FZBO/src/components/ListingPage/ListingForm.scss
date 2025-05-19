@@ -1,0 +1,79 @@
+.listingForm-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: #1C3458;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.listing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-textInput {
+  display: flex;
+  padding-right: 5%;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 7px;
+}
+
+.form-group {
+  width: 100%;
+  max-width: 400px;
+  margin: 5px auto;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: #22527a;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.submit-btn {
+  background-color: #1976d2;
+  color: white;
+  margin-top: 10px;
+}
+
+.submit-btn:disabled {
+  background-color: #90caf9;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .listingForm-container {
+    padding: 24px;
+    margin: 40px auto;
+  }
+
+  .listing-form {
+    gap: 12px;
+  }
+
+  input[type="text"] {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .listingForm-container {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .submit-btn {
+    font-size: 16px;
+  }
+}
