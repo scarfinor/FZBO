@@ -70,7 +70,7 @@ export default function SignUp() {
             <h1>Sign Up</h1>
             <FormikProvider value={formik}>
                 <Form className="signUp-form" onSubmit={formik.handleSubmit}>
-                    <div className="form-group">
+                    <div className="signUp-form-group">
                         <input
                             id="username"
                             name="username"
@@ -85,7 +85,7 @@ export default function SignUp() {
                         )}
                     </div>
 
-                    <div className="form-group">
+                    <div className="signUp-form-group">
                         <input
                             id="email"
                             name="email"
@@ -100,7 +100,7 @@ export default function SignUp() {
                         )}
                     </div>
 
-                    <div className="form-group">
+                    <div className="signUp-form-group">
                         <input
                             id="firstName"
                             name="firstName"
@@ -115,7 +115,7 @@ export default function SignUp() {
                         )}
                     </div>
 
-                    <div className="form-group">
+                    <div className="signUp-form-group">
                         <input
                             id="lastName"
                             name="lastName"
@@ -130,7 +130,7 @@ export default function SignUp() {
                         )}
                     </div>
 
-                    <div className="form-group">
+                    <div className="signUp-form-group">
                         <input
                             id="password"
                             name="password"
@@ -145,7 +145,7 @@ export default function SignUp() {
                         )}
                     </div>
 
-                    <div className="form-group">
+                    <div className="signUp-form-group">
                         <input
                             id="verifiedpassword"
                             name="verifiedPassword"
@@ -160,7 +160,7 @@ export default function SignUp() {
                         )}
                     </div>
 
-                    <div className="chckbox-container">
+                    <div className="signUp-checkbox-container">
                         <label>
                             <input
                                 id="acceptTerms"
@@ -177,7 +177,7 @@ export default function SignUp() {
                         )}
                     </div>
 
-                    <div className="chckbox-container">
+                    <div className="signUp-checkbox-container">
                         <label>
                             <input
                                 id="acceptPrivacyPolicy"

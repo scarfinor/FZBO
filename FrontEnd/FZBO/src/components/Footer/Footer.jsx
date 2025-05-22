@@ -7,9 +7,9 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer-container">
-                <NavLink to="/" className="footer-landing">
+                <NavLink to="/ListingForm" className="footer-landing">
                     <IoIosHome />
-                    Landing Page
+                    Listing Form
                 </NavLink>
             </div>
         </footer>

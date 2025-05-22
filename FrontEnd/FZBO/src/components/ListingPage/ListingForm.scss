@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 400px;
   margin: 80px auto;
-  padding: 32px;
+  padding: 32px 8% 32px 32px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   background-color: #1C3458;
@@ -10,9 +10,14 @@
   font-family: Arial, sans-serif;
 }
 
-.checkbox-container {
-  display: flex;
-  flex-direction: row;
+.listing-checkbox-container {
+  margin-top: 3%;
+  border-bottom: rgba(13, 119, 250, 0.73) 3px solid;
+  border-radius: 10px;
+  border-right: rgba(13, 119, 250, 0.73) 3px solid;
+  border-left: rgba(13, 119, 250, 0.73) 3px solid;
+  border-top: rgba(13, 119, 250, 0.73) 3px solid;
+  margin-left: 17px;
 }
 
 .listing-form {
@@ -21,24 +26,37 @@
   gap: 16px;
 }
 
-.form-textInput {
-  display: flex;
-  padding-right: 5%;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 7px;
+.center-text {
+ text-align: center;
 }
 
-.form-group {
+.headerText {
+  border-bottom: #0d77fa 3px solid;
+  text-align: center;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-bottom: 3%;
+  width: 105%;
+}
+
+.form-textInput {
+  padding: 2% 5%;
+
+  flex-direction: column;
+}
+
+.listing-form-group {
   width: 100%;
   max-width: 400px;
   margin: 5px auto;
-  padding: 10px;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   background-color: #22527a;
   text-align: center;
   font-family: Arial, sans-serif;
+  display: flex;
+  padding-right: 5%;
+  flex-direction: column;
 }
 
 .submit-btn {

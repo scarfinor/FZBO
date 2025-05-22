@@ -69,7 +69,7 @@ export default function SignIn() {
             <h1>Sign In</h1>
             <FormikProvider value={formik}>
                 <Form className="signIn-form" onSubmit={formik.handleSubmit}>
-                    <div className="form-group">
+                    <div className="signIn-form-group">
                         <input
                             id="username"
                             name="username"
@@ -84,7 +84,7 @@ export default function SignIn() {
                         )}
                     </div>
 
-                    <div className="form-group">
+                    <div className="signIn-form-group">
                         <input
                             id="password"
                             name="password"
