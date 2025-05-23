@@ -28,7 +28,7 @@ input[type="password"] {
   width: 100%;
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #1e37a3;
   font-size: 14px;
 }
 
@@ -42,21 +42,28 @@ input.error {
   margin-top: 4px;
 }
 
-.submit-btn,
 .google-btn {
   width: 100%;
   padding: 12px;
-  border: none;
-  border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
   transition: 0.3s ease;
+  border-bottom: rgba(13, 119, 250, 0.73) 3px solid;
+  border-radius: 10px;
+  border-right: rgba(13, 119, 250, 0.73) 3px solid;
+  border-left: rgba(13, 119, 250, 0.73) 3px solid;
+  border-top: rgba(13, 119, 250, 0.73) 3px solid;
 }
 
-.submit-btn {
+.signIn-submit-btn {
   background-color: #1976d2;
   color: white;
   margin-top: 10px;
+  border-bottom: rgba(0, 0, 0, 0.35) 3px solid;
+  border-radius: 10px;
+  border-right: rgba(0, 0, 0, 0.35) 3px solid;
+  border-left: rgba(0, 0, 0, 0.35) 3px solid;
+  border-top: rgba(0, 0, 0, 0.35) 3px solid;
 }
 
 .submit-btn:disabled {

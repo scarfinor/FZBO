@@ -124,99 +124,6 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="listing-checkbox-container">
-                            <div className="center-text">Direction Prefix</div>
-                            <label>
-                                <input
-                                    id="N"
-                                    name="N"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusActive}
-                                />
-                                N
-                            </label>
-
-                            <label>
-                                <input
-                                    id="E"
-                                    name="E"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusComingSoon}
-                                />E
-                            </label>
-
-                            <label>
-                                <input
-                                    id="S"
-                                    name="S"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusComingSoon}
-                                />S
-                            </label>
-
-                            <label>
-                                <input
-                                    id="W"
-                                    name="W"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusComingSoon}
-                                />W
-                            </label>
-
-                            <label>
-                                <input
-                                    id="NE"
-                                    name="NE"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusComingSoon}
-                                />NE
-                            </label>
-
-                            <label>
-                                <input
-                                    id="NW"
-                                    name="NW"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusComingSoon}
-                                />NW
-                            </label>
-
-                            <label>
-                                <input
-                                    id="SE"
-                                    name="SE"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusComingSoon}
-                                />SE
-                            </label>
-
-                            <label>
-                                <input
-                                    id="SW"
-                                    name="SW"
-                                    type="checkbox"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    checked={formik.values.fzboStatusComingSoon}
-                                />SW
-                            </label>
-
-                        </div>
-
                         <div className="form-textInput"> Street Name
                             <input
                                 id="streetName"
@@ -228,9 +135,295 @@ export default function ListingForm() {
                                 value={formik.values.description}
                             />
                         </div>
+
+                        <div className="listing-dropDown-container">Direction Prefix
+                            <div>
+                                <select
+                                    id="directionPrefix"
+                                    name="directionPrefix"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.directionPrefix}
+                                >
+                                    <option value="" label="Select Prefix" />
+                                    <option value="prefix1" label="N" />
+                                    <option value="prefix2" label="NE" />
+                                    <option value="prefix3" label="NW" />
+                                    <option value="prefix4" label="S" />
+                                    <option value="prefix5" label="SE" />
+                                    <option value="prefix6" label="SW" />
+                                    <option value="prefix7" label="E" />
+                                    <option value="prefix8" label="S" />
+                                    <option value="prefix9" label="W" />
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="listing-dropDown-container">Street Suffix
+                            <div>
+                                <select
+                                    id="streetSuffix"
+                                    name="streetSuffix"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.streetSuffix}
+                                >
+                                    <option value="" label="Select Suffix" />
+                                    <option value="suffix1" label="Alley" />
+                                    <option value="suffix2" label="Anex" />
+                                    <option value="suffix3" label="Arcde" />
+                                    <option value="suffix4" label="Avenue" />
+                                    <option value="suffix5" label="Bayou" />
+                                    <option value="suffix6" label="Beach" />
+                                    <option value="suffix7" label="Bend" />
+                                    <option value="suffix8" label="Bluff" />
+                                    <option value="suffix9" label="Bluffs" />
+                                    <option value="suffix10" label="Bottom" />
+                                    <option value="suffix11" label="Boulevard" />
+                                    <option value="suffix12" label="Branch" />
+                                    <option value="suffix13" label="Bridge" />
+                                    <option value="suffix14" label="Brook" />
+                                    <option value="suffix15" label="Brooks" />
+                                    <option value="suffix16" label="Burg" />
+                                    <option value="suffix17" label="Burgs" />
+                                    <option value="suffix18" label="Bypass" />
+                                    <option value="suffix19" label="Camp" />
+                                    <option value="suffix20" label="Canyon" />
+                                    <option value="suffix21" label="Cape" />
+                                    <option value="suffix22" label="Causeway" />
+                                    <option value="suffix23" label="Center" />
+                                    <option value="suffix24" label="Centers" />
+                                    <option value="suffix25" label="Circle" />
+                                    <option value="suffix26" label="Circles" />
+                                    <option value="suffix27" label="Cliff" />
+                                    <option value="suffix28" label="Cliffs" />
+                                    <option value="suffix29" label="Club" />
+                                    <option value="suffix30" label="Common" />
+                                    <option value="suffix31" label="Corner" />
+                                    <option value="suffix32" label="Corners" />
+                                    <option value="suffix33" label="Course" />
+                                    <option value="suffix34" label="Court" />
+                                    <option value="suffix35" label="Courts" />
+                                    <option value="suffix36" label="Cove" />
+                                    <option value="suffix37" label="Coves" />
+                                    <option value="suffix38" label="Creek" />
+                                    <option value="suffix39" label="Crescent" />
+                                    <option value="suffix40" label="Crest" />
+                                    <option value="suffix41" label="Crossing" />
+                                    <option value="suffix42" label="Crossroad" />
+                                    <option value="suffix43" label="Curve" />
+                                    <option value="suffix44" label="Dale" />
+                                    <option value="suffix45" label="Dam" />
+                                    <option value="suffix46" label="Divide" />
+                                    <option value="suffix47" label="Drive" />
+                                    <option value="suffix48" label="Drive" />
+                                    <option value="suffix49" label="Drives" />
+                                    <option value="suffix50" label="Estate" />
+                                    <option value="suffix51" label="Estates" />
+                                    <option value="suffix52" label="Expressway" />
+                                    <option value="suffix53" label="Extension" />
+                                    <option value="suffix54" label="Extensions" />
+                                    <option value="suffix55" label="Fall" />
+                                    <option value="suffix56" label="Falls" />
+                                    <option value="suffix57" label="Ferry" />
+                                    <option value="suffix58" label="Field" />
+                                    <option value="suffix59" label="Fields" />
+                                    <option value="suffix60" label="Flat" />
+                                    <option value="suffix61" label="Flats" />
+                                    <option value="suffix62" label="Ford" />
+                                    <option value="suffix63" label="Fords" />
+                                    <option value="suffix64" label="Forest" />
+                                    <option value="suffix65" label="Forge" />
+                                    <option value="suffix66" label="Forges" />
+                                    <option value="suffix67" label="Fork" />
+                                    <option value="suffix68" label="Forks" />
+                                    <option value="suffix69" label="Fort" />
+                                    <option value="suffix70" label="Freeway" />
+                                    <option value="suffix71" label="Garden" />
+                                    <option value="suffix72" label="Gardens" />
+                                    <option value="suffix73" label="Gateway" />
+                                    <option value="suffix74" label="Glen" />
+                                    <option value="suffix75" label="Glens" />
+                                    <option value="suffix76" label="Green" />
+                                    <option value="suffix77" label="Greens" />
+                                    <option value="suffix78" label="Grove" />
+                                    <option value="suffix79" label="Groves" />
+                                    <option value="suffix80" label="Harbor" />
+                                    <option value="suffix81" label="Harbors" />
+                                    <option value="suffix82" label="Haven" />
+                                    <option value="suffix83" label="Heights" />
+                                    <option value="suffix84" label="Highway" />
+                                    <option value="suffix85" label="Hill" />
+                                    <option value="suffix86" label="Hills" />
+                                    <option value="suffix87" label="Hollow" />
+                                    <option value="suffix88" label="Inlet" />
+                                    <option value="suffix89" label="Island" />
+                                    <option value="suffix90" label="Islands" />
+                                    <option value="suffix91" label="Isle" />
+                                    <option value="suffix92" label="Junction" />
+                                    <option value="suffix93" label="Junctions" />
+                                    <option value="suffix94" label="Key" />
+                                    <option value="suffix95" label="Keys" />
+                                    <option value="suffix96" label="Knoll" />
+                                    <option value="suffix97" label="Knolls" />
+                                    <option value="suffix98" label="Lake" />
+                                    <option value="suffix99" label="Lakes" />
+                                    <option value="suffix100" label="Land" />
+                                    <option value="suffix101" label="Landing" />
+                                    <option value="suffix102" label="Lane" />
+                                    <option value="suffix103" label="Light" />
+                                    <option value="suffix104" label="Lights" />
+                                    <option value="suffix105" label="Loaf" />
+                                    <option value="suffix106" label="Lock" />
+                                    <option value="suffix107" label="Locks" />
+                                    <option value="suffix108" label="Lodge" />
+                                    <option value="suffix109" label="Loop" />
+                                    <option value="suffix110" label="Mall" />
+                                    <option value="suffix111" label="Manor" />
+                                    <option value="suffix112" label="Manors" />
+                                    <option value="suffix113" label="Meadow" />
+                                    <option value="suffix114" label="Meadows" />
+                                    <option value="suffix115" label="Mews" />
+                                    <option value="suffix116" label="Mill" />
+                                    <option value="suffix117" label="Mills" />
+                                    <option value="suffix118" label="Mission" />
+                                    <option value="suffix119" label="Missions" />
+                                    <option value="suffix120" label="Motorway" />
+                                    <option value="suffix121" label="Mount" />
+                                    <option value="suffix122" label="Mountain" />
+                                    <option value="suffix123" label="Mountains" />
+                                    <option value="suffix124" label="Mountin" />
+                                    <option value="suffix125" label="Neck" />
+                                    <option value="suffix126" label="Orchard" />
+                                    <option value="suffix127" label="Oval" />
+                                    <option value="suffix128" label="Overpass" />
+                                    <option value="suffix129" label="Park" />
+                                    <option value="suffix130" label="Parks" />
+                                    <option value="suffix131" label="Parkway" />
+                                    <option value="suffix132" label="Parkways" />
+                                    <option value="suffix133" label="Pass" />
+                                    <option value="suffix134" label="Passage" />
+                                    <option value="suffix135" label="Path" />
+                                    <option value="suffix136" label="Pike" />
+                                    <option value="suffix137" label="Pine" />
+                                    <option value="suffix138" label="Pines" />
+                                    <option value="suffix139" label="Place" />
+                                    <option value="suffix140" label="Plain" />
+                                    <option value="suffix141" label="Plains" />
+                                    <option value="suffix142" label="Plaza" />
+                                    <option value="suffix143" label="Point" />
+                                    <option value="suffix144" label="Points" />
+                                    <option value="suffix145" label="Port" />
+                                    <option value="suffix146" label="Ports" />
+                                    <option value="suffix147" label="Prairie" />
+                                    <option value="suffix148" label="Radial" />
+                                    <option value="suffix149" label="Ramp" />
+                                    <option value="suffix150" label="Ranch" />
+                                    <option value="suffix151" label="Rapid" />
+                                    <option value="suffix152" label="Rapids" />
+                                    <option value="suffix153" label="Rest" />
+                                    <option value="suffix154" label="Ridge" />
+                                    <option value="suffix155" label="Ridges" />
+                                    <option value="suffix156" label="River" />
+                                    <option value="suffix157" label="Road" />
+                                    <option value="suffix158" label="Road" />
+                                    <option value="suffix159" label="Roads" />
+                                    <option value="suffix160" label="Route" />
+                                    <option value="suffix161" label="Row" />
+                                    <option value="suffix162" label="Rue" />
+                                    <option value="suffix163" label="Run" />
+                                    <option value="suffix164" label="Shoal" />
+                                    <option value="suffix165" label="Shoals" />
+                                    <option value="suffix166" label="Shore" />
+                                    <option value="suffix167" label="Shores" />
+                                    <option value="suffix168" label="Skyway" />
+                                    <option value="suffix169" label="Spring" />
+                                    <option value="suffix170" label="Springs" />
+                                    <option value="suffix171" label="Springs" />
+                                    <option value="suffix172" label="Spur" />
+                                    <option value="suffix173" label="Spurs" />
+                                    <option value="suffix174" label="Square" />
+                                    <option value="suffix175" label="Squares" />
+                                    <option value="suffix176" label="Station" />
+                                    <option value="suffix177" label="Station" />
+                                    <option value="suffix178" label="Stravenue" />
+                                    <option value="suffix179" label="Stravenue" />
+                                    <option value="suffix180" label="Stream" />
+                                    <option value="suffix181" label="Stream" />
+                                    <option value="suffix182" label="Street" />
+                                    <option value="suffix183" label="Street" />
+                                    <option value="suffix184" label="Streets" />
+                                    <option value="suffix185" label="Summit" />
+                                    <option value="suffix186" label="Summit" />
+                                    <option value="suffix187" label="Terrace" />
+                                    <option value="suffix188" label="Throughway" />
+                                    <option value="suffix189" label="Trace" />
+                                    <option value="suffix190" label="Track" />
+                                    <option value="suffix191" label="Trafficway" />
+                                    <option value="suffix192" label="Trail" />
+                                    <option value="suffix193" label="Tunnel" />
+                                    <option value="suffix194" label="Tunnel" />
+                                    <option value="suffix195" label="Turnpike" />
+                                    <option value="suffix196" label="Turnpike" />
+                                    <option value="suffix197" label="Underpass" />
+                                    <option value="suffix198" label="Union" />
+                                    <option value="suffix199" label="Unions" />
+                                    <option value="suffix200" label="Valley" />
+                                    <option value="suffix201" label="Valleys" />
+                                    <option value="suffix202" label="Via" />
+                                    <option value="suffix203" label="Viaduct" />
+                                    <option value="suffix204" label="View" />
+                                    <option value="suffix205" label="Views" />
+                                    <option value="suffix206" label="Village" />
+                                    <option value="suffix207" label="Village" />
+                                    <option value="suffix208" label="Villages" />
+                                    <option value="suffix209" label="Ville" />
+                                    <option value="suffix210" label="Vista" />
+                                    <option value="suffix211" label="Vista" />
+                                    <option value="suffix212" label="Walk" />
+                                    <option value="suffix213" label="Walks" />
+                                    <option value="suffix214" label="Wall" />
+                                    <option value="suffix215" label="Way" />
+                                    <option value="suffix216" label="Well" />
+                                    <option value="suffix217" label="Wells" />
+                                    <option value="suffix218" label="West" />
+                                    <option value="suffix219" label="Wester" />
+                                    <option value="suffix220" label="Weser" />
+                                    <option value="suffix221" label="Western" />
+                                    <option value="suffix222" label="Western" />
+                                    <option value="suffix223" label="Wharf" />
+                                    <option value="suffix224" label="Whee" />
+                                    <option value="suffix225" label="Wheel" />
+                                    <option value="suffix226" label="Wheels" />
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="listing-dropDown-container">Direction Suffix
+                            <div>
+                                <select
+                                    id="directionSuffix"
+                                    name="directionSuffix"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.directionSuffix}
+                                >
+                                    <option value="" label="Select Suffix" />
+                                    <option value="suffix1" label="N" />
+                                    <option value="suffix2" label="NE" />
+                                    <option value="suffix3" label="NW" />
+                                    <option value="suffix4" label="S" />
+                                    <option value="suffix5" label="SE" />
+                                    <option value="suffix6" label="SW" />
+                                    <option value="suffix7" label="E" />
+                                    <option value="suffix8" label="S" />
+                                    <option value="suffix9" label="W" />
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
-                    <button type="submit" className="submit-btn" disabled={formik.isSubmitting}>
+                    <button type="submit" className="listing-form-submit-btn" disabled={formik.isSubmitting}>
                         {formik.isSubmitting ? "Submitting..." : "Submit"}
                     </button>
                 </Form>

@@ -99,7 +99,7 @@ export default function SignIn() {
                         )}
                     </div>
 
-                    <button type="submit" className="submit-btn" disabled={formik.isSubmitting}>
+                    <button type="submit" className="signIn-submit-btn" disabled={formik.isSubmitting}>
                         {formik.isSubmitting ? "Submitting..." : "Submit"}
                     </button>
                 </Form>

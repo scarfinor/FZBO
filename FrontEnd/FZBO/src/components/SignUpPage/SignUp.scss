@@ -23,12 +23,17 @@
   align-items: flex-start;
 }
 .signUp-checkbox-container {
-  border-bottom: #1857a6 3px solid;
+  border-bottom: rgba(13, 119, 250, 0.73) 3px solid;
   border-radius: 10px;
-  border-right: #1857a6 3px solid;
-  border-left: #1857a6 3px solid;
-  border-top: #1857a6 3px solid;
+  border-right: rgba(13, 119, 250, 0.73) 3px solid;
+  border-left: rgba(13, 119, 250, 0.73) 3px solid;
+  border-top: rgba(13, 119, 250, 0.73) 3px solid;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  margin-left: 14%;
+  margin-right: 13%;
   text-align: left;
+  background-color: rgba(23, 81, 189, 0.51);
 }
 
 input[type="text"],
@@ -50,10 +55,15 @@ input.error {
   margin-top: 4px;
 }
 
-.submit-btn {
+.signUp-submit-btn {
   background-color: #1976d2;
   color: white;
   margin-top: 10px;
+  border-bottom: rgba(0, 0, 0, 0.35) 3px solid;
+  border-radius: 10px;
+  border-right: rgba(0, 0, 0, 0.35) 3px solid;
+  border-left: rgba(0, 0, 0, 0.35) 3px solid;
+  border-top: rgba(0, 0, 0, 0.35) 3px solid;
 }
 
 .submit-btn:disabled {
