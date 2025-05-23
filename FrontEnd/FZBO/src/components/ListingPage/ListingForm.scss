@@ -44,11 +44,13 @@
 
 .center-text {
  text-align: center;
+  color: #000000;
 }
 
 .headerText {
-  border-bottom: #ffffff 3px solid;
+  border-bottom: rgba(0, 0, 0, 0.26) 3px solid;
   text-align: center;
+  color: #000000;
   padding-top: 3%;
   padding-bottom: 3%;
   margin-bottom: 3%;
@@ -62,6 +64,7 @@
   padding-right: 5%;
   margin-bottom: 3%;
   flex-direction: column;
+  color: #000000;
 }
 
 .listing-form-group {
@@ -70,12 +73,13 @@
   margin: 5px auto;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  background-color: #22527a;
+  background-color: #b1ddff;
   text-align: center;
   font-family: Arial, sans-serif;
   display: flex;
   padding-right: 5%;
   flex-direction: column;
+  color: #000000;
 }
 
 .listing-form-submit-btn {
