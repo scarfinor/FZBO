@@ -71,7 +71,6 @@ export default function ListingForm() {
 
     return (
         <div className="listingForm-container">
-            <h1>Listing Form</h1>
             <FormikProvider value={formik}>
                 <Form className="listing-form" onSubmit={formik.handleSubmit}>
                     <div className="listing-form-group">
@@ -103,7 +102,7 @@ export default function ListingForm() {
                             </label>
                         </div>
 
-                        <div className="form-textInput">
+                        <div className="textInput">
                             Expected Active Date
                             <input
                                 id="activeDate"
@@ -123,7 +122,7 @@ export default function ListingForm() {
 
                     <div className="listing-form-group">
                         <div className="headerText">General Information</div>
-                        <div className="form-textInput">Street Number
+                        <div className="textInput">Street Number
                             <input
                                 id="streetNumber"
                                 name="streetNumber"
@@ -136,7 +135,7 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="form-textInput">Street Name
+                        <div className="textInput">Street Name
                             <input
                                 id="streetName"
                                 name="streetName"
@@ -149,7 +148,7 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="form-textInput">Unit Number
+                        <div className="textInput">Unit Number
                             <input
                                 id="unitNumber"
                                 name="unitNumber"
@@ -162,7 +161,7 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="form-textInput">County
+                        <div className="textInput">County
                             <input
                                 id="county"
                                 name="county"
@@ -175,7 +174,7 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="form-textInput">City
+                        <div className="textInput">city
                             <input
                                 id="city"
                                 name="city"
@@ -188,7 +187,7 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="form-textInput">Municipality
+                        <div className="textInput">Municipality
                             <input
                                 id="municipality"
                                 name="municipality"
@@ -201,7 +200,7 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="form-textInput">Zip Code
+                        <div className="textInput">Zip Code
                             <input
                                 id="zipCode"
                                 name="zipCode"
@@ -214,7 +213,7 @@ export default function ListingForm() {
                             />
                         </div>
 
-                        <div className="form-textInput">School District
+                        <div className="textInput">School District
                             <input
                                 id="schoolDistrict"
                                 name="schoolDistrict"

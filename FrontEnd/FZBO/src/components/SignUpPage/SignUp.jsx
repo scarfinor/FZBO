@@ -66,136 +66,148 @@ export default function SignUp() {
     });
 
     return (
-        <div className="signUp-container">
-            <h1>Sign Up</h1>
+        <div className="signUp-Form-container">
             <FormikProvider value={formik}>
                 <Form className="signUp-form" onSubmit={formik.handleSubmit}>
                     <div className="signUp-form-group">
-                        <input
-                            id="username"
-                            name="username"
-                            type="text"
-                            placeholder="Username"
-                            onChange={formik.handleChange}
-                            value={formik.values.username}
-                            className={formik.touched.username && formik.errors.username ? "error" : ""}
-                        />
-                        {formik.touched.username && formik.errors.username && (
-                            <div className="error-message">{formik.errors.username}</div>
-                        )}
-                    </div>
-
-                    <div className="signUp-form-group">
-                        <input
-                            id="email"
-                            name="email"
-                            type="text"
-                            placeholder="Email"
-                            onChange={formik.handleChange}
-                            value={formik.values.email}
-                            className={formik.touched.email && formik.errors.email ? "error" : ""}
-                        />
-                        {formik.touched.email && formik.errors.email && (
-                            <div className="error-message">{formik.errors.email}</div>
-                        )}
-                    </div>
-
-                    <div className="signUp-form-group">
-                        <input
-                            id="firstName"
-                            name="firstName"
-                            type="text"
-                            placeholder="First Name"
-                            onChange={formik.handleChange}
-                            value={formik.values.firstName}
-                            className={formik.touched.firstName && formik.errors.firstName ? "error" : ""}
-                        />
-                        {formik.touched.firstName && formik.errors.firstName && (
-                            <div className="error-message">{formik.errors.firstName}</div>
-                        )}
-                    </div>
-
-                    <div className="signUp-form-group">
-                        <input
-                            id="lastName"
-                            name="lastName"
-                            type="text"
-                            placeholder="Last Name"
-                            onChange={formik.handleChange}
-                            value={formik.values.lastName}
-                            className={formik.touched.lastName && formik.errors.lastName ? "error" : ""}
-                        />
-                        {formik.touched.lastName && formik.errors.lastName && (
-                            <div className="error-message">{formik.errors.lastName}</div>
-                        )}
-                    </div>
-
-                    <div className="signUp-form-group">
-                        <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            onChange={formik.handleChange}
-                            value={formik.values.password}
-                            className={formik.touched.password && formik.errors.password ? "error" : ""}
-                        />
-                        {formik.touched.password && formik.errors.password && (
-                            <div className="error-message">{formik.errors.password}</div>
-                        )}
-                    </div>
-
-                    <div className="signUp-form-group">
-                        <input
-                            id="verifiedpassword"
-                            name="verifiedPassword"
-                            type="password"
-                            placeholder="Verify Password"
-                            onChange={formik.handleChange}
-                            value={formik.values.verifiedPassword}
-                            className={formik.touched.verifiedPassword && formik.errors.verifiedPassword ? "error" : ""}
-                        />
-                        {formik.touched.verifiedPassword && formik.errors.verifiedPassword && (
-                            <div className="error-message">{formik.errors.verifiedPassword}</div>
-                        )}
-                    </div>
-
-                    <div className="signUp-checkbox-container">
-                        <label>
+                        <div className="headerText">Sign Up</div>
+                        <div className="textInput">
+                            Username
                             <input
-                                id="acceptTerms"
-                                name="acceptTerms"
-                                type="checkbox"
+                                id="username"
+                                name="username"
+                                type="text"
+                                placeholder="Enter Username"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                checked={formik.values.acceptTerms}
+                                value={formik.values.username}
+                                className="text-input"
                             />
-                            I accept the Terms and Conditions
-                        </label>
-                        {formik.touched.acceptTerms && formik.errors.acceptTerms && (
-                            <div className="error-message">{formik.errors.acceptTerms}</div>
-                        )}
-                    </div>
+                            {formik.touched.username && formik.errors.username && (
+                                <div className="error-message">{formik.errors.username}</div>
+                            )}
+                        </div>
 
-                    <div className="signUp-checkbox-container">
-                        <label>
+                        <div className="textInput">
+                            Email
                             <input
-                                id="acceptPrivacyPolicy"
-                                name="acceptPrivacyPolicy"
-                                type="checkbox"
+                                id="email"
+                                name="email"
+                                type="text"
+                                placeholder="Enter Email Address"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                checked={formik.values.acceptPrivacyPolicy}
+                                value={formik.values.email}
+                                className="text-input"
                             />
-                            I accept the Privacy Policy
-                        </label>
-                        {formik.touched.acceptPrivacyPolicy && formik.errors.acceptPrivacyPolicy && (
-                            <div className="error-message">{formik.errors.acceptPrivacyPolicy}</div>
-                        )}
-                    </div>
+                            {formik.touched.email && formik.errors.email && (
+                                <div className="error-message">{formik.errors.email}</div>
+                            )}
+                        </div>
 
-                    <button type="submit" className="signUp-submit-btn" disabled={formik.isSubmitting}>
-                        {formik.isSubmitting ? "Submitting..." : "Submit"}
+                        <div className="textInput">
+                            First Name
+                            <input
+                                id="firstName"
+                                name="firstName"
+                                type="text"
+                                placeholder="Enter First Name"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.firstName}
+                                className="text-input"
+                            />
+                            {formik.touched.firstName && formik.errors.firstName && (
+                                <div className="error-message">{formik.errors.firstName}</div>
+                            )}
+                        </div>
+
+                        <div className="textInput">
+                            Last Name
+                            <input
+                                id="lastName"
+                                name="lastName"
+                                type="text"
+                                placeholder="Enter Last Name"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.lastName}
+                                className="text-input"
+                            />
+                            {formik.touched.lastName && formik.errors.lastName && (
+                                <div className="error-message">{formik.errors.lastName}</div>
+                            )}
+                        </div>
+
+                        <div className="textInput">
+                            Password
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                placeholder="Enter Password"
+                                onChange={formik.handleChange}
+                                value={formik.values.password}
+                                className="text-input"
+                            />
+                            {formik.touched.password && formik.errors.password && (
+                                <div className="error-message">{formik.errors.password}</div>
+                            )}
+                        </div>
+
+                        <div className="textInput">
+                            Verify Password
+                            <input
+                                id="verifiedpassword"
+                                name="verifiedPassword"
+                                type="password"
+                                placeholder="Verify Password"
+                                onChange={formik.handleChange}
+                                value={formik.values.verifiedPassword}
+                                className="text-input"
+                            />
+                            {formik.touched.verifiedPassword && formik.errors.verifiedPassword && (
+                                <div className="error-message">{formik.errors.verifiedPassword}</div>
+                            )}
+                        </div>
+                        </div>
+                        <div className="signUp-form-group">
+                            <div className="headerText">Terms & Conditions</div>
+
+                        <div className="signUp-checkbox-container">
+                            <label>
+                                <input
+                                    id="acceptTerms"
+                                    name="acceptTerms"
+                                    type="checkbox"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    checked={formik.values.acceptTerms}
+                                /> I accept the Terms and Conditions
+                            </label>
+                            {formik.touched.acceptTerms && formik.errors.acceptTerms && (
+                                <div className="error-message">{formik.errors.acceptTerms}</div>
+                            )}
+                            </div>
+                            <div className="signUp-checkbox-container">
+                            <label>
+                                <input
+                                    id="acceptPrivacyPolicy"
+                                    name="acceptPrivacyPolicy"
+                                    type="checkbox"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    checked={formik.values.acceptPrivacyPolicy}
+                                />
+                                I accept the Privacy Policy
+                            </label>
+                            {formik.touched.acceptPrivacyPolicy && formik.errors.acceptPrivacyPolicy && (
+                                <div className="error-message">{formik.errors.acceptPrivacyPolicy}</div>
+                            )}
+                        </div>
+                    </div>
+                    <button type="submit" className="signIn-form-submit-btn">
+                        Submit
                     </button>
                 </Form>
             </FormikProvider>

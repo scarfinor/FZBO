@@ -8,10 +8,10 @@ import "./SignIn.scss"
 
 export default function SignIn() {
     const validation = Yup.object({
-        username: Yup.string().required("Username is required"),
+        username: Yup.string().max(50).required("Username is required"),
         password: Yup.string()
             .required("Password is required")
-            .min(3, "Password must be at least 3 characters"),
+            .min(3, "Password must be at least 3 characters").max(50),
     });
 
     const navigate = useNavigate();
@@ -65,48 +65,51 @@ export default function SignIn() {
     }, [navigate]);
 
     return (
-        <div className="signIn-container">
-            <h1>Sign In</h1>
+        <div className="signIn-Form-container">
             <FormikProvider value={formik}>
                 <Form className="signIn-form" onSubmit={formik.handleSubmit}>
                     <div className="signIn-form-group">
-                        <input
-                            id="username"
-                            name="username"
-                            type="text"
-                            placeholder="Username"
-                            onChange={formik.handleChange}
-                            value={formik.values.username}
-                            className={formik.touched.username && formik.errors.username ? "error" : ""}
-                        />
-                        {formik.touched.username && formik.errors.username && (
-                            <div className="error-message">{formik.errors.username}</div>
-                        )}
+                        <div className="headerText">Sign In</div>
+                        <div className="textInput">
+                          Username
+                            <input
+                                id="username"
+                                name="username"
+                                type="text"
+                                placeholder="Enter Username"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.username}
+                                className="text-input"
+                            />
+                            {formik.touched.username && formik.errors.username && (
+                                <div className="error-message">{formik.errors.username}</div>
+                            )}
+                        </div>
+                        <div className="textInput">
+                            Password
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                placeholder="Enter Password"
+                                onChange={formik.handleChange}
+                                value={formik.values.password}
+                                className="text-input"
+                            />
+                            {formik.touched.password && formik.errors.password && (
+                                <div className="error-message">{formik.errors.password}</div>
+                            )}
+                        </div>
                     </div>
-
-                    <div className="signIn-form-group">
-                        <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            onChange={formik.handleChange}
-                            value={formik.values.password}
-                            className={formik.touched.password && formik.errors.password ? "error" : ""}
-                        />
-                        {formik.touched.password && formik.errors.password && (
-                            <div className="error-message">{formik.errors.password}</div>
-                        )}
-                    </div>
-
-                    <button type="submit" className="signIn-submit-btn" disabled={formik.isSubmitting}>
-                        {formik.isSubmitting ? "Submitting..." : "Submit"}
+                    <button type="submit" className="signIn-form-submit-btn">
+                        Submit
                     </button>
                 </Form>
             </FormikProvider>
 
             <button className="google-btn" onClick={googleSignIn}>
-                <FcGoogle size={20} style={{ marginRight: 8 }} />
+                <FcGoogle />
                 Sign in with Google
             </button>
         </div>
