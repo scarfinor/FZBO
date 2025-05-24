@@ -29,6 +29,16 @@ export default function ListingForm() {
             fzboStatusActive: false,
             fzboStatusComingSoon: false,
             activeDate: "",
+            streetNumber: "",
+            streetName: "",
+            unitNumber: "",
+            county: "",
+            city: "",
+            municipality: "",
+            zipCode: "",
+            schoolDistrict: "",
+            directionPrefix: "",
+            streetSuffix: "",
         },
         validationSchema: validation,
         onSubmit: async (values) => {
@@ -72,6 +82,7 @@ export default function ListingForm() {
                                     id="fzboStatusActive"
                                     name="fzboStatusActive"
                                     type="checkbox"
+                                    className="fzboStatusActive"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     checked={formik.values.fzboStatusActive}
@@ -98,11 +109,11 @@ export default function ListingForm() {
                                 id="activeDate"
                                 name="activeDate"
                                 type="text"
-                                placeholder="Active Date"
+                                placeholder="Select Active Date"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.activeDate}
-                                className={formik.touched.activeDate && formik.errors.activeDate ? "error" : ""}
+                                className="text-input"
                             />
                             {formik.touched.activeDate && formik.errors.activeDate && (
                                 <div className="error-message">{formik.errors.activeDate}</div>
@@ -112,27 +123,107 @@ export default function ListingForm() {
 
                     <div className="listing-form-group">
                         <div className="headerText">General Information</div>
-                        <div className="form-textInput"> Street Number
+                        <div className="form-textInput">Street Number
                             <input
                                 id="streetNumber"
                                 name="streetNumber"
                                 type="text"
-                                placeholder="Street Number"
+                                placeholder="Select Street Number"
+                                className="text-input"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.description}
+                                value={formik.values.streetNumber}
                             />
                         </div>
 
-                        <div className="form-textInput"> Street Name
+                        <div className="form-textInput">Street Name
                             <input
                                 id="streetName"
                                 name="streetName"
                                 type="text"
-                                placeholder="Street Name"
+                                placeholder="Select Street Name"
+                                className="text-input"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.description}
+                                value={formik.values.streetName}
+                            />
+                        </div>
+
+                        <div className="form-textInput">Unit Number
+                            <input
+                                id="unitNumber"
+                                name="unitNumber"
+                                type="text"
+                                placeholder="Select Unit Number"
+                                className="text-input"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.unitNumber}
+                            />
+                        </div>
+
+                        <div className="form-textInput">County
+                            <input
+                                id="county"
+                                name="county"
+                                type="text"
+                                placeholder="Select County"
+                                className="text-input"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.county}
+                            />
+                        </div>
+
+                        <div className="form-textInput">City
+                            <input
+                                id="city"
+                                name="city"
+                                type="text"
+                                placeholder="Select City"
+                                className="text-input"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.city}
+                            />
+                        </div>
+
+                        <div className="form-textInput">Municipality
+                            <input
+                                id="municipality"
+                                name="municipality"
+                                type="text"
+                                placeholder="Select Municipality"
+                                className="text-input"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.municipality}
+                            />
+                        </div>
+
+                        <div className="form-textInput">Zip Code
+                            <input
+                                id="zipCode"
+                                name="zipCode"
+                                type="text"
+                                placeholder="Select Zip Code"
+                                className="text-input"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.zipCode}
+                            />
+                        </div>
+
+                        <div className="form-textInput">School District
+                            <input
+                                id="schoolDistrict"
+                                name="schoolDistrict"
+                                type="text"
+                                placeholder="Select School District"
+                                className="text-input"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.schoolDistrict}
                             />
                         </div>
 
@@ -141,6 +232,7 @@ export default function ListingForm() {
                                 <select
                                     id="directionPrefix"
                                     name="directionPrefix"
+                                    className="dropDown"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.directionPrefix}
@@ -153,8 +245,7 @@ export default function ListingForm() {
                                     <option value="prefix5" label="SE" />
                                     <option value="prefix6" label="SW" />
                                     <option value="prefix7" label="E" />
-                                    <option value="prefix8" label="S" />
-                                    <option value="prefix9" label="W" />
+                                    <option value="prefix8" label="W" />
                                 </select>
                             </div>
                         </div>
@@ -164,6 +255,7 @@ export default function ListingForm() {
                                 <select
                                     id="streetSuffix"
                                     name="streetSuffix"
+                                    className="dropDown"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.streetSuffix}
@@ -404,6 +496,7 @@ export default function ListingForm() {
                                 <select
                                     id="directionSuffix"
                                     name="directionSuffix"
+                                    className="dropDown"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.directionSuffix}
@@ -418,6 +511,72 @@ export default function ListingForm() {
                                     <option value="suffix7" label="E" />
                                     <option value="suffix8" label="S" />
                                     <option value="suffix9" label="W" />
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="listing-dropDown-container">State
+                            <div>
+                                <select
+                                    id="state"
+                                    name="state"
+                                    className="dropDown"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.state}
+                                >
+                                    <option value="" label="Select State" />
+                                    <option value="state1" label="Alabama" />
+                                    <option value="state2" label="Alaska" />
+                                    <option value="state3" label="Arizona" />
+                                    <option value="state4" label="Arkansas" />
+                                    <option value="state5" label="California" />
+                                    <option value="state6" label="Colorado" />
+                                    <option value="state7" label="Connecticut" />
+                                    <option value="state8" label="Delaware" />
+                                    <option value="state9" label="District of Columbia" />
+                                    <option value="state10" label="Florida" />
+                                    <option value="state11" label="Georgia" />
+                                    <option value="state12" label="Hawaii" />
+                                    <option value="state13" label="Idaho" />
+                                    <option value="state14" label="Illinois" />
+                                    <option value="state15" label="Indiana" />
+                                    <option value="state16" label="Iowa" />
+                                    <option value="state17" label="Kansas" />
+                                    <option value="state18" label="Kentucky" />
+                                    <option value="state19" label="Louisiana" />
+                                    <option value="state20" label="Maine" />
+                                    <option value="state21" label="Maryland" />
+                                    <option value="state22" label="Massachusetts" />
+                                    <option value="state23" label="Michigan" />
+                                    <option value="state24" label="Minnesota" />
+                                    <option value="state25" label="Mississippi" />
+                                    <option value="state26" label="Missouri" />
+                                    <option value="state27" label="Montana" />
+                                    <option value="state28" label="Nebraska" />
+                                    <option value="state29" label="Nevada" />
+                                    <option value="state30" label="New Hampshire" />
+                                    <option value="state31" label="New Jersey" />
+                                    <option value="state32" label="New Mexico" />
+                                    <option value="state33" label="New York" />
+                                    <option value="state34" label="North Carolina" />
+                                    <option value="state35" label="North Dakota" />
+                                    <option value="state36" label="Ohio" />
+                                    <option value="state37" label="Oklahoma" />
+                                    <option value="state38" label="Oregon" />
+                                    <option value="state39" label="Pennsylvania" />
+                                    <option value="state40" label="Rhode Island" />
+                                    <option value="state41" label="South Carolina" />
+                                    <option value="state42" label="South Dakota" />
+                                    <option value="state43" label="Tennessee" />
+                                    <option value="state44" label="Texas" />
+                                    <option value="state45" label="Utah" />
+                                    <option value="state46" label="Vermont" />
+                                    <option value="state47" label="Virginia" />
+                                    <option value="state48" label="Washington" />
+                                    <option value="state49" label="West Virginia" />
+                                    <option value="state50" label="Wisconsin" />
+                                    <option value="state51" label="Wyoming" />
                                 </select>
                             </div>
                         </div>
