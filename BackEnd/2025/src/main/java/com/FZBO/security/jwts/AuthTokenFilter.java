@@ -32,7 +32,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             String uri = request.getRequestURI();
-            if (uri.startsWith("/api/auth/signup") || uri.startsWith("/api/auth/signin") ||
+            if (uri.startsWith("/api/auth/signUp") || uri.startsWith("/api/auth/signIn") ||
                     uri.startsWith("/oauth2/") || uri.startsWith("/login/oauth2/")) {
                 filterChain.doFilter(request, response);
                 return;

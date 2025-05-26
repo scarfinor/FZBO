@@ -47,9 +47,6 @@ public class User {
     @Size(max = 1000, message = "Bio must be less than 1001 characters")
     private String bio;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SocialMedia> socials;
-
     @NotBlank(message = "Password must not be blank")
     @NotNull(message = "Password must not be null")
     @Size(min = 5, max = 120, message = "Password must be more than 4 characters and less than 121 characters")
@@ -150,14 +147,6 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public List<SocialMedia> getSocials() {
-        return socials;
-    }
-
-    public void setSocials(List<SocialMedia> socials) {
-        this.socials = socials;
     }
 
     public String getPassword() {

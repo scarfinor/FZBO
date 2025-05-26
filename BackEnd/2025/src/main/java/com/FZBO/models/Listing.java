@@ -1,7 +1,8 @@
 package com.FZBO.models;
 
-import com.FZBO.enums.*;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -20,45 +21,74 @@ public class Listing {
     @GeneratedValue
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Location location;
+    @NotBlank(message = "Style must not be blank")
+    private String style;
 
-    private short beds;
+    private Boolean statusActive;
 
-    private Double baths;
-
-    private EStyle style;
-
-    private LocalDate buildDate;
-
-    private Boolean isActive;
+    private Boolean statusComingSoon;
 
     private LocalDate expectedActive;
 
-    private short LivingAreaSqFt;
-
-    private short LotSizeSqFt;
-
+    @NotBlank(message = "School District must not be blank")
     private String schoolDistrict;
 
-    private final Set<EAmenity> amenities = new HashSet<>();
+    private String directionPrefix;
 
-    private EParking parking;
+    private String streetSuffix;
 
-    private final Set<EUtil> utils = new HashSet<>();
+    private String directionSuffix;
 
+    @NotBlank(message = "List Price must not be blank")
     private int listPrice;
 
-    private short pricePerSqFt;
-
-    private final Set<EAppliance> appliances = new HashSet<>();
-
+    @Size(min = 10, max = 1500, message = "Remarks must be at least 10 and no more than 1500 characters long")
     private String remarks;
+
+    private String ownerName;
+
+    private String ownerPhoneNumber;
+
+    private String occupantName;
+
+    @NotBlank(message = "Listing Agreement must not be blank")
+    private String listingAgreement;
+
+    @NotBlank(message = "Assisting Seller must not be blank")
+    private String assistingSeller;
+
+    @NotBlank(message = "Special Listing Conditions must not be blank")
+    private String specialListingConditions;
+
+    private String occupantType;
 
     @ManyToMany
     private Set<Image> photos = new HashSet<>();
 
     private Set<String> photoURLs = new HashSet<>();
+
+    @NotBlank(message = "Street name must not be blank")
+    private String streetName;
+
+    private int unitNumber;
+
+    @NotBlank(message = "Street number must not be blank")
+    private int streetNumber;
+
+    @NotBlank(message = "State must not be blank")
+    private String state;
+
+    @NotBlank(message = "County must not be blank")
+    private String county;
+
+    @NotBlank(message = "City must not be blank")
+    private String city;
+
+    @NotBlank(message = "municipality must not be blank")
+    private String municipality;
+
+    @NotBlank(message = "Zip Code must not be blank")
+    private int zipCode;
 
     public Listing() {};
 
@@ -70,60 +100,36 @@ public class Listing {
         this.id = id;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public short getBeds() {
-        return beds;
-    }
-
-    public void setBeds(short beds) {
-        this.beds = beds;
-    }
-
-    public Double getBaths() {
-        return baths;
-    }
-
-    public void setBaths(Double baths) {
-        this.baths = baths;
-    }
-
-    public EStyle getStyle() {
+    public String getStyle() {
         return style;
     }
 
-    public void setStyle(EStyle style) {
+    public void setStyle(String style) {
         this.style = style;
     }
 
-    public LocalDate getBuildDate() {
-        return buildDate;
+    public Boolean getStatusActive() {
+        return statusActive;
     }
 
-    public void setBuildDate(LocalDate buildDate) {
-        this.buildDate = buildDate;
+    public void setStatusActive(Boolean statusActive) {
+        this.statusActive = statusActive;
     }
 
-    public short getLivingAreaSqFt() {
-        return LivingAreaSqFt;
+    public Boolean getStatusComingSoon() {
+        return statusComingSoon;
     }
 
-    public void setLivingAreaSqFt(short livingAreaSqFt) {
-        LivingAreaSqFt = livingAreaSqFt;
+    public void setStatusComingSoon(Boolean statusComingSoon) {
+        this.statusComingSoon = statusComingSoon;
     }
 
-    public short getLotSizeSqFt() {
-        return LotSizeSqFt;
+    public LocalDate getExpectedActive() {
+        return expectedActive;
     }
 
-    public void setLotSizeSqFt(short lotSizeSqFt) {
-        LotSizeSqFt = lotSizeSqFt;
+    public void setExpectedActive(LocalDate expectedActive) {
+        this.expectedActive = expectedActive;
     }
 
     public String getSchoolDistrict() {
@@ -134,20 +140,28 @@ public class Listing {
         this.schoolDistrict = schoolDistrict;
     }
 
-    public Set<EAmenity> getAmenities() {
-        return amenities;
+    public String getDirectionPrefix() {
+        return directionPrefix;
     }
 
-    public EParking getParking() {
-        return parking;
+    public void setDirectionPrefix(String directionPrefix) {
+        this.directionPrefix = directionPrefix;
     }
 
-    public void setParking(EParking parking) {
-        this.parking = parking;
+    public String getDirectionSuffix() {
+        return directionSuffix;
     }
 
-    public Set<EUtil> getUtils() {
-        return utils;
+    public void setDirectionSuffix(String directionSuffix) {
+        this.directionSuffix = directionSuffix;
+    }
+
+    public String getStreetSuffix() {
+        return streetSuffix;
+    }
+
+    public void setStreetSuffix(String streetSuffix) {
+        this.streetSuffix = streetSuffix;
     }
 
     public int getListPrice() {
@@ -158,16 +172,68 @@ public class Listing {
         this.listPrice = listPrice;
     }
 
-    public short getPricePerSqFt() {
-        return pricePerSqFt;
+    public String getRemarks() {
+        return remarks;
     }
 
-    public void setPricePerSqFt(short pricePerSqFt) {
-        this.pricePerSqFt = pricePerSqFt;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public Set<EAppliance> getAppliances() {
-        return appliances;
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerPhoneNumber() {
+        return ownerPhoneNumber;
+    }
+
+    public void setOwnerPhoneNumber(String ownerPhoneNumber) {
+        this.ownerPhoneNumber = ownerPhoneNumber;
+    }
+
+    public String getOccupantName() {
+        return occupantName;
+    }
+
+    public void setOccupantName(String occupantName) {
+        this.occupantName = occupantName;
+    }
+
+    public String getListingAgreement() {
+        return listingAgreement;
+    }
+
+    public void setListingAgreement(String listingAgreement) {
+        this.listingAgreement = listingAgreement;
+    }
+
+    public String getAssistingSeller() {
+        return assistingSeller;
+    }
+
+    public void setAssistingSeller(String assistingSeller) {
+        this.assistingSeller = assistingSeller;
+    }
+
+    public String getSpecialListingConditions() {
+        return specialListingConditions;
+    }
+
+    public void setSpecialListingConditions(String specialListingConditions) {
+        this.specialListingConditions = specialListingConditions;
+    }
+
+    public String getOccupantType() {
+        return occupantType;
+    }
+
+    public void setOccupantType(String occupantType) {
+        this.occupantType = occupantType;
     }
 
     public Set<Image> getPhotos() {
@@ -186,27 +252,67 @@ public class Listing {
         this.photoURLs = photoURLs;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
-    public LocalDate getExpectedActive() {
-        return expectedActive;
+    public int getUnitNumber() {
+        return unitNumber;
     }
 
-    public void setExpectedActive(LocalDate expectedActive) {
-        this.expectedActive = expectedActive;
+    public void setUnitNumber(int unitNumber) {
+        this.unitNumber = unitNumber;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public int getStreetNumber() {
+        return streetNumber;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setStreetNumber(int streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
+    }
+
+    public int getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
     }
 }

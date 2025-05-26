@@ -1,4 +1,9 @@
 package com.FZBO.repos;
 
-public interface ListingRepository {
+import com.FZBO.models.Listing;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ListingRepository extends CrudRepository<Listing, Integer> {
 }
