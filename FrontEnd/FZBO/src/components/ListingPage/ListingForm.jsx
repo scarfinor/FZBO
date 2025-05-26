@@ -3,6 +3,7 @@ import { Form, FormikProvider, useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import "./ListingForm.scss";
+import axios from "axios";
 
 export default function ListingForm() {
     const navigate = useNavigate();
@@ -10,6 +11,20 @@ export default function ListingForm() {
     const validation = Yup.object({
         fzboStatusActive: Yup.boolean(),
         fzboStatusComingSoon: Yup.boolean(),
+        streetNumber: Yup.string().required("Street Number is required"),
+        streetName: Yup.string().required("Street Name is required"),
+        county: Yup.string().required("County is required"),
+        city: Yup.string().required("City is required"),
+        municipality: Yup.string().required("Municipality is required"),
+        zipCode: Yup.string().required("Zip Code is required"),
+        schoolDistrict: Yup.string().required("School District is required"),
+        state: Yup.string().required("State is required"),
+        listPrice: Yup.number().required("List Price is required"),
+        style: Yup.string().required("Property Style is required"),
+        assistingSeller: Yup.string().required("Assisting Seller is required"),
+        specialListingConditions: Yup.string().required("Special Listing Conditions is required"),
+        listingAgreement: Yup.string().required("Listing Agreement is required"),
+        publicRemarks: Yup.string().min(10).max(1500).required("Public Remarks is required"),
         activeDate: Yup.string().when("fzboStatusComingSoon", {
             is: true,
             then: (schema) => schema
@@ -38,7 +53,19 @@ export default function ListingForm() {
             zipCode: "",
             schoolDistrict: "",
             directionPrefix: "",
+            directionSuffix: "",
             streetSuffix: "",
+            state: "",
+            listPrice: "",
+            ownerName: "",
+            ownerPhoneNumber: "",
+            occupantName: "",
+            style: "",
+            listingAgreement: "",
+            assistingSeller: "",
+            specialListingConditions: "",
+            occupantType: "",
+            publicRemarks: "",
         },
         validationSchema: validation,
         onSubmit: async (values) => {
@@ -50,7 +77,6 @@ export default function ListingForm() {
 
             console.log("Submitting:", listingRequest);
 
-            /*
             try {
               const response = await axios.post(
                 "http://localhost:8080/api/listings/submitListing",
@@ -65,7 +91,6 @@ export default function ListingForm() {
               console.error("Listing submission failed:", error.response?.data || error.message);
               alert("Listing submission failed.");
             }
-            */
         },
     });
 
@@ -121,7 +146,7 @@ export default function ListingForm() {
                     </div>
 
                     <div className="listing-form-group">
-                        <div className="headerText">General Information</div>
+                        <div className="headerText">Location Information</div>
                         <div className="textInput">Street Number
                             <input
                                 id="streetNumber"
@@ -133,6 +158,9 @@ export default function ListingForm() {
                                 onBlur={formik.handleBlur}
                                 value={formik.values.streetNumber}
                             />
+                            {formik.touched.streetNumber && formik.errors.streetNumber && (
+                                <div className="error-message">{formik.errors.streetNumber}</div>
+                            )}
                         </div>
 
                         <div className="textInput">Street Name
@@ -146,6 +174,9 @@ export default function ListingForm() {
                                 onBlur={formik.handleBlur}
                                 value={formik.values.streetName}
                             />
+                            {formik.touched.streetName && formik.errors.streetName && (
+                                <div className="error-message">{formik.errors.streetName}</div>
+                            )}
                         </div>
 
                         <div className="textInput">Unit Number
@@ -172,6 +203,9 @@ export default function ListingForm() {
                                 onBlur={formik.handleBlur}
                                 value={formik.values.county}
                             />
+                            {formik.touched.county && formik.errors.county && (
+                                <div className="error-message">{formik.errors.county}</div>
+                            )}
                         </div>
 
                         <div className="textInput">city
@@ -185,6 +219,9 @@ export default function ListingForm() {
                                 onBlur={formik.handleBlur}
                                 value={formik.values.city}
                             />
+                            {formik.touched.city && formik.errors.city && (
+                                <div className="error-message">{formik.errors.city}</div>
+                            )}
                         </div>
 
                         <div className="textInput">Municipality
@@ -198,6 +235,9 @@ export default function ListingForm() {
                                 onBlur={formik.handleBlur}
                                 value={formik.values.municipality}
                             />
+                            {formik.touched.municipality && formik.errors.municipality && (
+                                <div className="error-message">{formik.errors.municipality}</div>
+                            )}
                         </div>
 
                         <div className="textInput">Zip Code
@@ -211,6 +251,9 @@ export default function ListingForm() {
                                 onBlur={formik.handleBlur}
                                 value={formik.values.zipCode}
                             />
+                            {formik.touched.zipCode && formik.errors.zipCode && (
+                                <div className="error-message">{formik.errors.zipCode}</div>
+                            )}
                         </div>
 
                         <div className="textInput">School District
@@ -224,6 +267,9 @@ export default function ListingForm() {
                                 onBlur={formik.handleBlur}
                                 value={formik.values.schoolDistrict}
                             />
+                            {formik.touched.schoolDistrict && formik.errors.schoolDistrict && (
+                                <div className="error-message">{formik.errors.schoolDistrict}</div>
+                            )}
                         </div>
 
                         <div className="listing-dropDown-container">Direction Prefix
@@ -237,14 +283,14 @@ export default function ListingForm() {
                                     value={formik.values.directionPrefix}
                                 >
                                     <option value="" label="Select Prefix" />
-                                    <option value="prefix1" label="N" />
-                                    <option value="prefix2" label="NE" />
-                                    <option value="prefix3" label="NW" />
-                                    <option value="prefix4" label="S" />
-                                    <option value="prefix5" label="SE" />
-                                    <option value="prefix6" label="SW" />
-                                    <option value="prefix7" label="E" />
-                                    <option value="prefix8" label="W" />
+                                    <option value="N" label="N" />
+                                    <option value="NE" label="NE" />
+                                    <option value="E" label="E" />
+                                    <option value="SE" label="SE" />
+                                    <option value="S" label="S" />
+                                    <option value="SW" label="SW" />
+                                    <option value="W" label="W" />
+                                    <option value="NW" label="NW" />
                                 </select>
                             </div>
                         </div>
@@ -260,232 +306,27 @@ export default function ListingForm() {
                                     value={formik.values.streetSuffix}
                                 >
                                     <option value="" label="Select Suffix" />
-                                    <option value="suffix1" label="Alley" />
-                                    <option value="suffix2" label="Anex" />
-                                    <option value="suffix3" label="Arcde" />
-                                    <option value="suffix4" label="Avenue" />
-                                    <option value="suffix5" label="Bayou" />
-                                    <option value="suffix6" label="Beach" />
-                                    <option value="suffix7" label="Bend" />
-                                    <option value="suffix8" label="Bluff" />
-                                    <option value="suffix9" label="Bluffs" />
-                                    <option value="suffix10" label="Bottom" />
-                                    <option value="suffix11" label="Boulevard" />
-                                    <option value="suffix12" label="Branch" />
-                                    <option value="suffix13" label="Bridge" />
-                                    <option value="suffix14" label="Brook" />
-                                    <option value="suffix15" label="Brooks" />
-                                    <option value="suffix16" label="Burg" />
-                                    <option value="suffix17" label="Burgs" />
-                                    <option value="suffix18" label="Bypass" />
-                                    <option value="suffix19" label="Camp" />
-                                    <option value="suffix20" label="Canyon" />
-                                    <option value="suffix21" label="Cape" />
-                                    <option value="suffix22" label="Causeway" />
-                                    <option value="suffix23" label="Center" />
-                                    <option value="suffix24" label="Centers" />
-                                    <option value="suffix25" label="Circle" />
-                                    <option value="suffix26" label="Circles" />
-                                    <option value="suffix27" label="Cliff" />
-                                    <option value="suffix28" label="Cliffs" />
-                                    <option value="suffix29" label="Club" />
-                                    <option value="suffix30" label="Common" />
-                                    <option value="suffix31" label="Corner" />
-                                    <option value="suffix32" label="Corners" />
-                                    <option value="suffix33" label="Course" />
-                                    <option value="suffix34" label="Court" />
-                                    <option value="suffix35" label="Courts" />
-                                    <option value="suffix36" label="Cove" />
-                                    <option value="suffix37" label="Coves" />
-                                    <option value="suffix38" label="Creek" />
-                                    <option value="suffix39" label="Crescent" />
-                                    <option value="suffix40" label="Crest" />
-                                    <option value="suffix41" label="Crossing" />
-                                    <option value="suffix42" label="Crossroad" />
-                                    <option value="suffix43" label="Curve" />
-                                    <option value="suffix44" label="Dale" />
-                                    <option value="suffix45" label="Dam" />
-                                    <option value="suffix46" label="Divide" />
-                                    <option value="suffix47" label="Drive" />
-                                    <option value="suffix48" label="Drive" />
-                                    <option value="suffix49" label="Drives" />
-                                    <option value="suffix50" label="Estate" />
-                                    <option value="suffix51" label="Estates" />
-                                    <option value="suffix52" label="Expressway" />
-                                    <option value="suffix53" label="Extension" />
-                                    <option value="suffix54" label="Extensions" />
-                                    <option value="suffix55" label="Fall" />
-                                    <option value="suffix56" label="Falls" />
-                                    <option value="suffix57" label="Ferry" />
-                                    <option value="suffix58" label="Field" />
-                                    <option value="suffix59" label="Fields" />
-                                    <option value="suffix60" label="Flat" />
-                                    <option value="suffix61" label="Flats" />
-                                    <option value="suffix62" label="Ford" />
-                                    <option value="suffix63" label="Fords" />
-                                    <option value="suffix64" label="Forest" />
-                                    <option value="suffix65" label="Forge" />
-                                    <option value="suffix66" label="Forges" />
-                                    <option value="suffix67" label="Fork" />
-                                    <option value="suffix68" label="Forks" />
-                                    <option value="suffix69" label="Fort" />
-                                    <option value="suffix70" label="Freeway" />
-                                    <option value="suffix71" label="Garden" />
-                                    <option value="suffix72" label="Gardens" />
-                                    <option value="suffix73" label="Gateway" />
-                                    <option value="suffix74" label="Glen" />
-                                    <option value="suffix75" label="Glens" />
-                                    <option value="suffix76" label="Green" />
-                                    <option value="suffix77" label="Greens" />
-                                    <option value="suffix78" label="Grove" />
-                                    <option value="suffix79" label="Groves" />
-                                    <option value="suffix80" label="Harbor" />
-                                    <option value="suffix81" label="Harbors" />
-                                    <option value="suffix82" label="Haven" />
-                                    <option value="suffix83" label="Heights" />
-                                    <option value="suffix84" label="Highway" />
-                                    <option value="suffix85" label="Hill" />
-                                    <option value="suffix86" label="Hills" />
-                                    <option value="suffix87" label="Hollow" />
-                                    <option value="suffix88" label="Inlet" />
-                                    <option value="suffix89" label="Island" />
-                                    <option value="suffix90" label="Islands" />
-                                    <option value="suffix91" label="Isle" />
-                                    <option value="suffix92" label="Junction" />
-                                    <option value="suffix93" label="Junctions" />
-                                    <option value="suffix94" label="Key" />
-                                    <option value="suffix95" label="Keys" />
-                                    <option value="suffix96" label="Knoll" />
-                                    <option value="suffix97" label="Knolls" />
-                                    <option value="suffix98" label="Lake" />
-                                    <option value="suffix99" label="Lakes" />
-                                    <option value="suffix100" label="Land" />
-                                    <option value="suffix101" label="Landing" />
-                                    <option value="suffix102" label="Lane" />
-                                    <option value="suffix103" label="Light" />
-                                    <option value="suffix104" label="Lights" />
-                                    <option value="suffix105" label="Loaf" />
-                                    <option value="suffix106" label="Lock" />
-                                    <option value="suffix107" label="Locks" />
-                                    <option value="suffix108" label="Lodge" />
-                                    <option value="suffix109" label="Loop" />
-                                    <option value="suffix110" label="Mall" />
-                                    <option value="suffix111" label="Manor" />
-                                    <option value="suffix112" label="Manors" />
-                                    <option value="suffix113" label="Meadow" />
-                                    <option value="suffix114" label="Meadows" />
-                                    <option value="suffix115" label="Mews" />
-                                    <option value="suffix116" label="Mill" />
-                                    <option value="suffix117" label="Mills" />
-                                    <option value="suffix118" label="Mission" />
-                                    <option value="suffix119" label="Missions" />
-                                    <option value="suffix120" label="Motorway" />
-                                    <option value="suffix121" label="Mount" />
-                                    <option value="suffix122" label="Mountain" />
-                                    <option value="suffix123" label="Mountains" />
-                                    <option value="suffix124" label="Mountin" />
-                                    <option value="suffix125" label="Neck" />
-                                    <option value="suffix126" label="Orchard" />
-                                    <option value="suffix127" label="Oval" />
-                                    <option value="suffix128" label="Overpass" />
-                                    <option value="suffix129" label="Park" />
-                                    <option value="suffix130" label="Parks" />
-                                    <option value="suffix131" label="Parkway" />
-                                    <option value="suffix132" label="Parkways" />
-                                    <option value="suffix133" label="Pass" />
-                                    <option value="suffix134" label="Passage" />
-                                    <option value="suffix135" label="Path" />
-                                    <option value="suffix136" label="Pike" />
-                                    <option value="suffix137" label="Pine" />
-                                    <option value="suffix138" label="Pines" />
-                                    <option value="suffix139" label="Place" />
-                                    <option value="suffix140" label="Plain" />
-                                    <option value="suffix141" label="Plains" />
-                                    <option value="suffix142" label="Plaza" />
-                                    <option value="suffix143" label="Point" />
-                                    <option value="suffix144" label="Points" />
-                                    <option value="suffix145" label="Port" />
-                                    <option value="suffix146" label="Ports" />
-                                    <option value="suffix147" label="Prairie" />
-                                    <option value="suffix148" label="Radial" />
-                                    <option value="suffix149" label="Ramp" />
-                                    <option value="suffix150" label="Ranch" />
-                                    <option value="suffix151" label="Rapid" />
-                                    <option value="suffix152" label="Rapids" />
-                                    <option value="suffix153" label="Rest" />
-                                    <option value="suffix154" label="Ridge" />
-                                    <option value="suffix155" label="Ridges" />
-                                    <option value="suffix156" label="River" />
-                                    <option value="suffix157" label="Road" />
-                                    <option value="suffix158" label="Road" />
-                                    <option value="suffix159" label="Roads" />
-                                    <option value="suffix160" label="Route" />
-                                    <option value="suffix161" label="Row" />
-                                    <option value="suffix162" label="Rue" />
-                                    <option value="suffix163" label="Run" />
-                                    <option value="suffix164" label="Shoal" />
-                                    <option value="suffix165" label="Shoals" />
-                                    <option value="suffix166" label="Shore" />
-                                    <option value="suffix167" label="Shores" />
-                                    <option value="suffix168" label="Skyway" />
-                                    <option value="suffix169" label="Spring" />
-                                    <option value="suffix170" label="Springs" />
-                                    <option value="suffix171" label="Springs" />
-                                    <option value="suffix172" label="Spur" />
-                                    <option value="suffix173" label="Spurs" />
-                                    <option value="suffix174" label="Square" />
-                                    <option value="suffix175" label="Squares" />
-                                    <option value="suffix176" label="Station" />
-                                    <option value="suffix177" label="Station" />
-                                    <option value="suffix178" label="Stravenue" />
-                                    <option value="suffix179" label="Stravenue" />
-                                    <option value="suffix180" label="Stream" />
-                                    <option value="suffix181" label="Stream" />
-                                    <option value="suffix182" label="Street" />
-                                    <option value="suffix183" label="Street" />
-                                    <option value="suffix184" label="Streets" />
-                                    <option value="suffix185" label="Summit" />
-                                    <option value="suffix186" label="Summit" />
-                                    <option value="suffix187" label="Terrace" />
-                                    <option value="suffix188" label="Throughway" />
-                                    <option value="suffix189" label="Trace" />
-                                    <option value="suffix190" label="Track" />
-                                    <option value="suffix191" label="Trafficway" />
-                                    <option value="suffix192" label="Trail" />
-                                    <option value="suffix193" label="Tunnel" />
-                                    <option value="suffix194" label="Tunnel" />
-                                    <option value="suffix195" label="Turnpike" />
-                                    <option value="suffix196" label="Turnpike" />
-                                    <option value="suffix197" label="Underpass" />
-                                    <option value="suffix198" label="Union" />
-                                    <option value="suffix199" label="Unions" />
-                                    <option value="suffix200" label="Valley" />
-                                    <option value="suffix201" label="Valleys" />
-                                    <option value="suffix202" label="Via" />
-                                    <option value="suffix203" label="Viaduct" />
-                                    <option value="suffix204" label="View" />
-                                    <option value="suffix205" label="Views" />
-                                    <option value="suffix206" label="Village" />
-                                    <option value="suffix207" label="Village" />
-                                    <option value="suffix208" label="Villages" />
-                                    <option value="suffix209" label="Ville" />
-                                    <option value="suffix210" label="Vista" />
-                                    <option value="suffix211" label="Vista" />
-                                    <option value="suffix212" label="Walk" />
-                                    <option value="suffix213" label="Walks" />
-                                    <option value="suffix214" label="Wall" />
-                                    <option value="suffix215" label="Way" />
-                                    <option value="suffix216" label="Well" />
-                                    <option value="suffix217" label="Wells" />
-                                    <option value="suffix218" label="West" />
-                                    <option value="suffix219" label="Wester" />
-                                    <option value="suffix220" label="Weser" />
-                                    <option value="suffix221" label="Western" />
-                                    <option value="suffix222" label="Western" />
-                                    <option value="suffix223" label="Wharf" />
-                                    <option value="suffix224" label="Whee" />
-                                    <option value="suffix225" label="Wheel" />
-                                    <option value="suffix226" label="Wheels" />
+                                    <option value="Alley" label="Alley" />
+                                    <option value="Avenue" label="Avenue" />
+                                    <option value="Boulevard" label="Boulevard" />
+                                    <option value="Circle" label="Circle" />
+                                    <option value="Drive" label="Drive" />
+                                    <option value="Expressway" label="Expressway" />
+                                    <option value="Highway" label="Highway" />
+                                    <option value="Lane" label="Lane" />
+                                    <option value="Parkway" label="Parkway" />
+                                    <option value="Place" label="Place" />
+                                    <option value="Road" label="Road" />
+                                    <option value="Street" label="Street" />
+                                    <option value="Trail" label="Trail" />
+                                    <option value="Square" label="Square" />
+                                    <option value="Terrace" label="Terrace" />
+                                    <option value="View" label="View" />
+                                    <option value="Walk" label="Walk" />
+                                    <option value="Way" label="Way" />
+                                    <option value="Park" label="Park" />
+                                    <option value="Drive" label="Drive" />
+                                    <option value="Court" label="Court" />
                                 </select>
                             </div>
                         </div>
@@ -501,15 +342,14 @@ export default function ListingForm() {
                                     value={formik.values.directionSuffix}
                                 >
                                     <option value="" label="Select Suffix" />
-                                    <option value="suffix1" label="N" />
-                                    <option value="suffix2" label="NE" />
-                                    <option value="suffix3" label="NW" />
-                                    <option value="suffix4" label="S" />
-                                    <option value="suffix5" label="SE" />
-                                    <option value="suffix6" label="SW" />
-                                    <option value="suffix7" label="E" />
-                                    <option value="suffix8" label="S" />
-                                    <option value="suffix9" label="W" />
+                                    <option value="N" label="N" />
+                                    <option value="NE" label="NE" />
+                                    <option value="E" label="E" />
+                                    <option value="SE" label="SE" />
+                                    <option value="S" label="S" />
+                                    <option value="SW" label="SW" />
+                                    <option value="W" label="W" />
+                                    <option value="NW" label="NW" />
                                 </select>
                             </div>
                         </div>
@@ -525,59 +365,260 @@ export default function ListingForm() {
                                     value={formik.values.state}
                                 >
                                     <option value="" label="Select State" />
-                                    <option value="state1" label="Alabama" />
-                                    <option value="state2" label="Alaska" />
-                                    <option value="state3" label="Arizona" />
-                                    <option value="state4" label="Arkansas" />
-                                    <option value="state5" label="California" />
-                                    <option value="state6" label="Colorado" />
-                                    <option value="state7" label="Connecticut" />
-                                    <option value="state8" label="Delaware" />
-                                    <option value="state9" label="District of Columbia" />
-                                    <option value="state10" label="Florida" />
-                                    <option value="state11" label="Georgia" />
-                                    <option value="state12" label="Hawaii" />
-                                    <option value="state13" label="Idaho" />
-                                    <option value="state14" label="Illinois" />
-                                    <option value="state15" label="Indiana" />
-                                    <option value="state16" label="Iowa" />
-                                    <option value="state17" label="Kansas" />
-                                    <option value="state18" label="Kentucky" />
-                                    <option value="state19" label="Louisiana" />
-                                    <option value="state20" label="Maine" />
-                                    <option value="state21" label="Maryland" />
-                                    <option value="state22" label="Massachusetts" />
-                                    <option value="state23" label="Michigan" />
-                                    <option value="state24" label="Minnesota" />
-                                    <option value="state25" label="Mississippi" />
-                                    <option value="state26" label="Missouri" />
-                                    <option value="state27" label="Montana" />
-                                    <option value="state28" label="Nebraska" />
-                                    <option value="state29" label="Nevada" />
-                                    <option value="state30" label="New Hampshire" />
-                                    <option value="state31" label="New Jersey" />
-                                    <option value="state32" label="New Mexico" />
-                                    <option value="state33" label="New York" />
-                                    <option value="state34" label="North Carolina" />
-                                    <option value="state35" label="North Dakota" />
-                                    <option value="state36" label="Ohio" />
-                                    <option value="state37" label="Oklahoma" />
-                                    <option value="state38" label="Oregon" />
-                                    <option value="state39" label="Pennsylvania" />
-                                    <option value="state40" label="Rhode Island" />
-                                    <option value="state41" label="South Carolina" />
-                                    <option value="state42" label="South Dakota" />
-                                    <option value="state43" label="Tennessee" />
-                                    <option value="state44" label="Texas" />
-                                    <option value="state45" label="Utah" />
-                                    <option value="state46" label="Vermont" />
-                                    <option value="state47" label="Virginia" />
-                                    <option value="state48" label="Washington" />
-                                    <option value="state49" label="West Virginia" />
-                                    <option value="state50" label="Wisconsin" />
-                                    <option value="state51" label="Wyoming" />
+                                    <option value="Alabama" label="Alabama" />
+                                    <option value="Alaska" label="Alaska" />
+                                    <option value="Arizona" label="Arizona" />
+                                    <option value="Arkansas" label="Arkansas" />
+                                    <option value="California" label="California" />
+                                    <option value="Colorado" label="Colorado" />
+                                    <option value="Connecticut" label="Connecticut" />
+                                    <option value="Delaware" label="Delaware" />
+                                    <option value="District of Columbia" label="District of Columbia" />
+                                    <option value="Florida" label="Florida" />
+                                    <option value="Georgia" label="Georgia" />
+                                    <option value="Hawaii" label="Hawaii" />
+                                    <option value="Idaho" label="Idaho" />
+                                    <option value="Illinois" label="Illinois" />
+                                    <option value="Indiana" label="Indiana" />
+                                    <option value="Iowa" label="Iowa" />
+                                    <option value="Kansas" label="Kansas" />
+                                    <option value="Kentucky" label="Kentucky" />
+                                    <option value="Louisiana" label="Louisiana" />
+                                    <option value="Maine" label="Maine" />
+                                    <option value="Maryland" label="Maryland" />
+                                    <option value="Massachusetts" label="Massachusetts" />
+                                    <option value="Michigan" label="Michigan" />
+                                    <option value="Minnesota" label="Minnesota" />
+                                    <option value="Mississippi" label="Mississippi" />
+                                    <option value="Missouri" label="Missouri" />
+                                    <option value="Montana" label="Montana" />
+                                    <option value="Nebraska" label="Nebraska" />
+                                    <option value="Nevada" label="Nevada" />
+                                    <option value="New Hampshire" label="New Hampshire" />
+                                    <option value="New Jersey" label="New Jersey" />
+                                    <option value="New Mexico" label="New Mexico" />
+                                    <option value="New York" label="New York" />
+                                    <option value="North Carolina" label="North Carolina" />
+                                    <option value="North Dakota" label="North Dakota" />
+                                    <option value="Ohio" label="Ohio" />
+                                    <option value="Oklahoma" label="Oklahoma" />
+                                    <option value="Oregon" label="Oregon" />
+                                    <option value="Pennsylvania" label="Pennsylvania" />
+                                    <option value="Rhode Island" label="Rhode Island" />
+                                    <option value="South Carolina" label="South Carolina" />
+                                    <option value="South Dakota" label="South Dakota" />
+                                    <option value="Tennessee" label="Tennessee" />
+                                    <option value="Texas" label="Texas" />
+                                    <option value="Utah" label="Utah" />
+                                    <option value="Vermont" label="Vermont" />
+                                    <option value="Virginia" label="Virginia" />
+                                    <option value="Washington" label="Washington" />
+                                    <option value="West Virginia" label="West Virginia" />
+                                    <option value="Wisconsin" label="Wisconsin" />
+                                    <option value="Wyoming" label="Wyoming" />
+                                </select>
+                                {formik.touched.state && formik.errors.state && (
+                                    <div className="error-message">{formik.errors.state}</div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="listing-form-group">
+                        <div className="headerText">Listing Information</div>
+                        <div className="textInput">
+                            List Price
+                            <input
+                                id="listPrice"
+                                name="listPrice"
+                                type="integer"
+                                placeholder="Enter List Price"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.listPrice}
+                                className="text-input"
+                            />
+                            {formik.touched.listPrice && formik.errors.listPrice && (
+                                <div className="error-message">{formik.errors.listPrice}</div>
+                            )}
+                        </div>
+                        <div className="textInput">
+                            Owner's Name
+                            <input
+                                id="ownerName"
+                                name="ownerName"
+                                type="text"
+                                placeholder="Enter Owner's Name"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.ownerName}
+                                className="text-input"
+                            />
+                            {formik.touched.ownerName && formik.errors.ownerName && (
+                                <div className="error-message">{formik.errors.ownerName}</div>
+                            )}
+                        </div>
+                        <div className="textInput">
+                            Owner's Phone Number
+                            <input
+                                id="ownerPhoneNumber"
+                                name="ownerPhoneNumber"
+                                type="text"
+                                placeholder="Enter Owner's Phone Number"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.ownerPhoneNumber}
+                                className="text-input"
+                            />
+                            {formik.touched.ownerPhoneNumber && formik.errors.ownerPhoneNumber && (
+                                <div className="error-message">{formik.errors.ownerPhoneNumber}</div>
+                            )}
+                        </div>
+                        <div className="textInput">
+                            Occupant's Name
+                            <input
+                                id="occupantName"
+                                name="occupantName"
+                                type="text"
+                                placeholder="Enter Occupant's Name"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.occupantName}
+                                className="text-input"
+                            />
+                            {formik.touched.occupantName && formik.errors.occupantName && (
+                                <div className="error-message">{formik.errors.occupantName}</div>
+                            )}
+                        </div>
+                        <div className="listing-dropDown-container">Property Style
+                            <div>
+                                <select
+                                    id="style"
+                                    name="style"
+                                    className="dropDown"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.style}
+                                >
+                                    <option value="" label="Select Style" />
+                                    <option value="Villa" label="Villa" />
+                                    <option value="Townhouse" label="Townhouse" />
+                                    <option value="Cabin" label="Cabin" />
+                                    <option value="Condominium" label="Condominium" />
+                                    <option value="Manufactured Home" label="Manufactured Home" />
+                                    <option value="Mobile Home" label="Mobile Home" />
+                                    <option value="Single Family Residence" label="Single Family Residence" />
+                                    <option value="Stock Cooperative" label="Stock Cooperative" />
+                                </select>
+                                {formik.touched.style && formik.errors.style && (
+                                    <div className="error-message">{formik.errors.style}</div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="listing-dropDown-container">Listing Agreement
+                            <div>
+                                <select
+                                    id="listingAgreement"
+                                    name="listingAgreement"
+                                    className="dropDown"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.listingAgreement}
+                                >
+                                    <option value="" label="Select Listing Agreement" /> />
+                                    <option value="Open" label="Open" />
+                                    <option value="Probate" label="probate" />
+                                    <option value="Purchaser Exemptions" label="Purchaser Exemptions" />
+                                    <option value="Transaction Brokerage" label="Transaction Brokerage" />
+                                </select>
+                                {formik.touched.listingAgreement && formik.errors.listingAgreement && (
+                                    <div className="error-message">{formik.errors.listingAgreement}</div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="listing-dropDown-container">Licensee Assisting Seller
+                            <div>
+                                <select
+                                    id="assistingSeller"
+                                    name="assistingSeller"
+                                    className="dropDown"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.assistingSeller}
+                                >
+                                    <option value="" label="Select assisting seller" />
+                                    <option value="Designated Agent" label="Designated Agent" />
+                                    <option value="Seller's Agent" label="Seller's Agent" />
+                                    <option value="Transaction Brokerage" label="Transaction Brokerage" />
+                                    <option value="Owner" label="Owner" />
+                                </select>
+                                {formik.touched.assistingSeller && formik.errors.assistingSeller && (
+                                    <div className="error-message">{formik.errors.assistingSeller}</div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="listing-dropDown-container">Special Listing Conditions
+                            <div>
+                                <select
+                                    id="specialListingConditions"
+                                    name="specialListingConditions"
+                                    className="dropDown"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.specialListingConditions}
+                                >
+                                    <option value="" label="Select Special Listing Conditions" />
+                                    <option value="Auction" label="Auction" />
+                                    <option value="Bankruptcy Property" label="Bankruptcy Property" />
+                                    <option value="Foreclosure" label="Foreclosure" />
+                                    <option value="HUD Owned" label="HUD Owned" />
+                                    <option value="Listed As Is" label="Listed As Is" />
+                                    <option value="Notice Of Defualt" label="Noice Of Defualt" />
+                                    <option value="Probate Listing" label="Probate Listing" />
+                                    <option value="Real Estate Owned" label="Real Estate Owned" />
+                                    <option value="Short Sale" label="Short Sale" />
+                                    <option value="Standard" label="Standard" />
+                                    <option value="Third Party Approval" label="Third Party Approval" />
+                                </select>
+                                {formik.touched.specialListingConditions && formik.errors.specialListingConditions && (
+                                    <div className="error-message">{formik.errors.specialListingConditions}</div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="listing-dropDown-container">Occupant Type
+                            <div>
+                                <select
+                                    id="occupantType"
+                                    name="occupantType"
+                                    className="dropDown"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.occupantType}
+                                >
+                                    <option value="" label="Select Occupant Type" />
+                                    <option value="Owner" label="Owner" />
+                                    <option value="Tenant" label="Tenant" />
+                                    <option value="Vacant" label="Vacant" />
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div className="listing-form-group">
+                        <div className="headerText">Remarks</div>
+                        <div className="textInput">
+                            Public Remarks
+                            <input
+                                id="publicRemarks"
+                                name="publicRemarks"
+                                type="text"
+                                placeholder="Enter Public Remarks"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.publicRemarks}
+                                className="text-input"
+                            />
+                            {formik.touched.publicRemarks && formik.errors.publicRemarks && (
+                                <div className="error-message">{formik.errors.publicRemarks}</div>
+                            )}
                         </div>
                     </div>
 
