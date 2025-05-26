@@ -42,8 +42,8 @@ public class Listing {
     @NotBlank(message = "List Price must not be blank")
     private int listPrice;
 
-    @Size(min = 10, max = 1500, message = "Remarks must be at least 10 and no more than 1500 characters long")
-    private String remarks;
+    @Size(min = 10, max = 1500, message = "Public Remarks must be at least 10 and no more than 1500 characters long")
+    private String publicRemarks;
 
     private String ownerName;
 
@@ -172,12 +172,12 @@ public class Listing {
         this.listPrice = listPrice;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public String getPublicRemarks() {
+        return publicRemarks;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setPublicRemarks(String publicRemarks) {
+        this.publicRemarks = publicRemarks;
     }
 
     public String getOwnerName() {
