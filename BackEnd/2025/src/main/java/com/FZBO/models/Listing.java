@@ -2,6 +2,7 @@ package com.FZBO.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -24,11 +25,11 @@ public class Listing {
     @NotBlank(message = "Style must not be blank")
     private String style;
 
-    private Boolean statusActive;
+    private Boolean fzboStatusActive;
 
-    private Boolean statusComingSoon;
+    private Boolean fzboStatusComingSoon;
 
-    private LocalDate expectedActive;
+    private LocalDate activeDate;
 
     @NotBlank(message = "School District must not be blank")
     private String schoolDistrict;
@@ -39,7 +40,7 @@ public class Listing {
 
     private String directionSuffix;
 
-    @NotBlank(message = "List Price must not be blank")
+    @NotNull(message = "List Price must not be null")
     private int listPrice;
 
     @Size(min = 10, max = 1500, message = "Public Remarks must be at least 10 and no more than 1500 characters long")
@@ -70,10 +71,10 @@ public class Listing {
     @NotBlank(message = "Street name must not be blank")
     private String streetName;
 
-    private int unitNumber;
+    private String unitNumber;
 
     @NotBlank(message = "Street number must not be blank")
-    private int streetNumber;
+    private String streetNumber;
 
     @NotBlank(message = "State must not be blank")
     private String state;
@@ -88,9 +89,40 @@ public class Listing {
     private String municipality;
 
     @NotBlank(message = "Zip Code must not be blank")
-    private int zipCode;
+    private String zipCode;
+
+    private String fullAddress;
 
     public Listing() {};
+
+    public Listing(String style, Boolean fzboStatusActive, Boolean fzboStatusComingSoon, LocalDate activeDate, String schoolDistrict, String directionPrefix, String streetSuffix, String directionSuffix, int listPrice, String publicRemarks, String ownerName, String ownerPhoneNumber, String occupantName, String listingAgreement, String assistingSeller, String specialListingConditions, String occupantType, String streetName, String unitNumber, String streetNumber, String state, String county, String city, String municipality, String zipCode, String fullAddress) {
+        this.style = style;
+        this.fzboStatusActive = fzboStatusActive;
+        this.fzboStatusComingSoon = fzboStatusComingSoon;
+        this.activeDate = activeDate;
+        this.schoolDistrict = schoolDistrict;
+        this.directionPrefix = directionPrefix;
+        this.streetSuffix = streetSuffix;
+        this.directionSuffix = directionSuffix;
+        this.listPrice = listPrice;
+        this.publicRemarks = publicRemarks;
+        this.ownerName = ownerName;
+        this.ownerPhoneNumber = ownerPhoneNumber;
+        this.occupantName = occupantName;
+        this.listingAgreement = listingAgreement;
+        this.assistingSeller = assistingSeller;
+        this.specialListingConditions = specialListingConditions;
+        this.occupantType = occupantType;
+        this.streetName = streetName;
+        this.unitNumber = unitNumber;
+        this.streetNumber = streetNumber;
+        this.state = state;
+        this.county = county;
+        this.city = city;
+        this.municipality = municipality;
+        this.zipCode = zipCode;
+        this.fullAddress = fullAddress;
+    }
 
     public int getId() {
         return id;
@@ -108,28 +140,28 @@ public class Listing {
         this.style = style;
     }
 
-    public Boolean getStatusActive() {
-        return statusActive;
+    public Boolean getFzboStatusComingSoon() {
+        return fzboStatusComingSoon;
     }
 
-    public void setStatusActive(Boolean statusActive) {
-        this.statusActive = statusActive;
+    public void setFzboStatusComingSoon(Boolean fzboStatusComingSoon) {
+        this.fzboStatusComingSoon = fzboStatusComingSoon;
     }
 
-    public Boolean getStatusComingSoon() {
-        return statusComingSoon;
+    public LocalDate getActiveDate() {
+        return activeDate;
     }
 
-    public void setStatusComingSoon(Boolean statusComingSoon) {
-        this.statusComingSoon = statusComingSoon;
+    public void setActiveDate(LocalDate activeDate) {
+        this.activeDate = activeDate;
     }
 
-    public LocalDate getExpectedActive() {
-        return expectedActive;
+    public Boolean getFzboStatusActive() {
+        return fzboStatusActive;
     }
 
-    public void setExpectedActive(LocalDate expectedActive) {
-        this.expectedActive = expectedActive;
+    public void setFzboStatusActive(Boolean fzboStatusActive) {
+        this.fzboStatusActive = fzboStatusActive;
     }
 
     public String getSchoolDistrict() {
@@ -260,19 +292,19 @@ public class Listing {
         this.streetName = streetName;
     }
 
-    public int getUnitNumber() {
+    public String getUnitNumber() {
         return unitNumber;
     }
 
-    public void setUnitNumber(int unitNumber) {
+    public void setUnitNumber(String unitNumber) {
         this.unitNumber = unitNumber;
     }
 
-    public int getStreetNumber() {
+    public String getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(int streetNumber) {
+    public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
     }
 
@@ -308,11 +340,19 @@ public class Listing {
         this.municipality = municipality;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getFullAddress() {
+        return fullAddress;
+    }
+
+    public void setFullAddress(String fullAddress) {
+        this.fullAddress = fullAddress;
     }
 }

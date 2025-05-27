@@ -25,16 +25,6 @@ public class UserController {
     @Autowired
     private JWTUtils jwtUtils;
 
-    @GetMapping("/allUsers")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<User>> allUsers() {
-        List<User> users = (List<User>) userRepository.findAll();
-        if (users.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(users);
-    }
-
     @GetMapping("/logout")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> logoutUser(HttpServletResponse response) {
