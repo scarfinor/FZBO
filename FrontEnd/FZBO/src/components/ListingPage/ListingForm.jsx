@@ -19,7 +19,10 @@ export default function ListingForm() {
         zipCode: Yup.string().required("Zip Code is required"),
         schoolDistrict: Yup.string().required("School District is required"),
         state: Yup.string().required("State is required"),
-        listPrice: Yup.number().required("List Price is required"),
+        listPrice: Yup.number()
+            .typeError("List Price must be a number")
+            .required("List Price is required")
+            .positive("List Price must be greater than zero"),
         style: Yup.string().required("Property Style is required"),
         assistingSeller: Yup.string().required("Assisting Seller is required"),
         specialListingConditions: Yup.string().required("Special Listing Conditions is required"),
@@ -73,6 +76,28 @@ export default function ListingForm() {
                 fzboStatusActive: values.fzboStatusActive,
                 fzboStatusComingSoon: values.fzboStatusComingSoon,
                 activeDate: values.activeDate,
+                streetNumber: values.streetNumber,
+                streetName: values.streetName,
+                unitNumber: values.unitNumber,
+                county: values.county,
+                city: values.city,
+                municipality: values.municipality,
+                zipCode: values.zipCode,
+                schoolDistrict: values.schoolDistrict,
+                directionPrefix: values.directionPrefix,
+                directionSuffix: values.directionSuffix,
+                streetSuffix: values.streetSuffix,
+                state: values.state,
+                listPrice: Number(values.listPrice),
+                ownerName: values.ownerName,
+                ownerPhoneNumber: values.ownerPhoneNumber,
+                occupantName: values.occupantName,
+                style: values.style,
+                listingAgreement: values.listingAgreement,
+                assistingSeller: values.assistingSeller,
+                specialListingConditions: values.specialListingConditions,
+                occupantType: values.occupantType,
+                publicRemarks: values.publicRemarks,
             };
 
             console.log("Submitting:", listingRequest);
@@ -430,7 +455,8 @@ export default function ListingForm() {
                             <input
                                 id="listPrice"
                                 name="listPrice"
-                                type="integer"
+                                type="number"
+                                min="0"
                                 placeholder="Enter List Price"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -524,7 +550,7 @@ export default function ListingForm() {
                                     onBlur={formik.handleBlur}
                                     value={formik.values.listingAgreement}
                                 >
-                                    <option value="" label="Select Listing Agreement" /> />
+                                    <option value="" label="Select Listing Agreement" />
                                     <option value="Open" label="Open" />
                                     <option value="Probate" label="probate" />
                                     <option value="Purchaser Exemptions" label="Purchaser Exemptions" />
@@ -622,8 +648,8 @@ export default function ListingForm() {
                         </div>
                     </div>
 
-                    <button type="submit" className="listing-form-submit-btn" disabled={formik.isSubmitting}>
-                        {formik.isSubmitting ? "Submitting..." : "Submit"}
+                    <button type="submit" className="listing-form-submit-btn">
+                        Submit Listing
                     </button>
                 </Form>
             </FormikProvider>
