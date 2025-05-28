@@ -5,16 +5,16 @@ import com.FZBO.payloads.requests.ListingRequest;
 import com.FZBO.payloads.responses.ListingResponse;
 import com.FZBO.payloads.responses.MessageResponse;
 import com.FZBO.repos.ListingRepository;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static com.FZBO.payloads.responses.ListingResponse.getListingResponse;
 
 @RestController
 @RequestMapping("/api/listings")
@@ -24,7 +24,7 @@ public class  ListingController {
 
     @PostMapping("/submitListing")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN') or hasRole('BUYER') or hasRole('SELLER')")
-    public ResponseEntity<?> submitListing(HttpServletResponse response, Authentication authentication, @RequestBody ListingRequest listingRequest) {
+    public ResponseEntity<?> submitListing(Authentication authentication, @RequestBody ListingRequest listingRequest) {
         if (authentication == null || !authentication.isAuthenticated()) {
             return new ResponseEntity<>("User is not authenticated", HttpStatus.UNAUTHORIZED);
         }
@@ -45,10 +45,7 @@ public class  ListingController {
                     .badRequest()
                     .body(new MessageResponse("Error: Full Address is already listed!"));
         }
-
-        ListingResponse listingResponse = getListingResponse(listingRequest);
-        Listing listing = new Listing(
-                listingRequest.getStyle(),
+        Listing listing = new Listing(listingRequest.getStyle(),
                 listingRequest.getFzboStatusActive(),
                 listingRequest.getFzboStatusComingSoon(),
                 listingRequest.getActiveDate(),
@@ -74,43 +71,22 @@ public class  ListingController {
                 listingRequest.getMunicipality(),
                 listingRequest.getZipCode(),
                 listingRequest.getFullAddress());
-
         listingRepository.save(listing);
+        ListingResponse listingResponse = getListingResponse(listing);
         return ResponseEntity.ok(listingResponse);
 }
 
-    private static ListingResponse getListingResponse(ListingRequest listingRequest) {
-        Listing listing = new Listing(
-                listingRequest.getStyle(),
-                listingRequest.getFzboStatusActive(),
-                listingRequest.getFzboStatusComingSoon(),
-                listingRequest.getActiveDate(),
-                listingRequest.getSchoolDistrict(),
-                listingRequest.getDirectionPrefix(),
-                listingRequest.getStreetSuffix(),
-                listingRequest.getDirectionSuffix(),
-                listingRequest.getListPrice(),
-                listingRequest.getPublicRemarks(),
-                listingRequest.getOwnerName(),
-                listingRequest.getOwnerPhoneNumber(),
-                listingRequest.getOccupantName(),
-                listingRequest.getListingAgreement(),
-                listingRequest.getSpecialListingConditions(),
-                listingRequest.getAssistingSeller(),
-                listingRequest.getOccupantType(),
-                listingRequest.getStreetName(),
-                listingRequest.getStreetNumber(),
-                listingRequest.getUnitNumber(),
-                listingRequest.getState(),
-                listingRequest.getCounty(),
-                listingRequest.getCity(),
-                listingRequest.getMunicipality(),
-                listingRequest.getZipCode(),
-                listingRequest.getFullAddress());
-
-        ListingResponse listingResponse = new ListingResponse();
-        listingResponse.setMessage(listing.getFullAddress() + " Has been successfully listed on FZBO!");
-        return listingResponse;
+    @GetMapping("/allListings")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN') or hasRole('BUYER') or hasRole('SELLER')")
+    ResponseEntity<?>allListings(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return new ResponseEntity<>("User is not authenticated", HttpStatus.UNAUTHORIZED);
+        }
+        List<Listing> listings = (List<Listing>) listingRepository.findAll();
+            if (listings.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+         return ResponseEntity.ok(listings);
     }
 }
 
