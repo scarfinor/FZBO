@@ -55,6 +55,14 @@ export default function Header() {
                     <FaTimes />
                 </div>
                 <div className="side-menu-container">
+                    <NavLink to="/ListingForm">
+                        <IoIosAddCircleOutline />
+                        Listing Form
+                    </NavLink>
+                    <NavLink to="/ListingTable">
+                        <IoIosLogIn />
+                        Listing Table
+                    </NavLink>
                     <NavLink to="/SignUp" onClick={toggleMenu}>
                         <IoIosAddCircleOutline />
                         Sign Up
