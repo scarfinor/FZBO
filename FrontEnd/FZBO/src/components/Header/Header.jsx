@@ -32,6 +32,14 @@ export default function Header() {
                         <IoIosAddCircleOutline />
                         Sign Up
                     </NavLink>
+                    <NavLink to="/ListingForm">
+                        <IoIosAddCircleOutline />
+                        Listing Form
+                    </NavLink>
+                    <NavLink to="/ListingTable">
+                        <IoIosLogIn />
+                        Listing Table
+                    </NavLink>
                     <NavLink to="/SignIn">
                         <IoIosLogIn />
                         Sign In

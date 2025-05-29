@@ -22,9 +22,9 @@ export default function ListingTable() {
 
     return (
         <div className="listing-table-container">
-            <h2 className="table-title">Listing Table</h2>
+            <h2 className="table-header-text">Listing Table</h2>
             <table>
-                <thead className="table-header">
+                <thead className="listing-table-header">
                 <tr>
                     <th>ID</th>
                     <th>Style</th>
@@ -34,7 +34,7 @@ export default function ListingTable() {
                     <th>Price</th>
                 </tr>
                 </thead>
-                <tbody className="table-body">
+                <tbody className="listing-table-body">
                 {listings.map((listing) => (
                     <tr key={listing.id}>
                         <td>{listing.id}</td>
