@@ -112,7 +112,7 @@ export default function SignIn() {
             </FormikProvider>
 
             <button className="google-btn" onClick={googleSignIn}>
-                <FcGoogle />
+                <FcGoogle  className="google-icon"/>
                 Sign in with Google
             </button>
         </div>
