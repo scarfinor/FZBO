@@ -27,7 +27,10 @@ public class UserController {
 
     @GetMapping("/logout")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> logoutUser(HttpServletResponse response) {
+    public ResponseEntity<?> logoutUser(HttpServletResponse response, Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return new ResponseEntity<>("User is not authenticated", HttpStatus.UNAUTHORIZED);
+        }
         jwtUtils.clearJwtCookie(response);
         return ResponseEntity.ok("Logged out successfully.");
     }

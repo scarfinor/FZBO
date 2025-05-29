@@ -70,7 +70,7 @@ public class JWTUtils {
     }
 
     public void setJwtInCookies(HttpServletResponse response, String jwt) {
-        Cookie jwtCookie = new Cookie("JWT", jwt);
+        Cookie jwtCookie = new Cookie("Token", jwt);
         jwtCookie.setHttpOnly(true);
         jwtCookie.setSecure(true);
         jwtCookie.setPath("/");
@@ -79,7 +79,7 @@ public class JWTUtils {
     }
 
     public void clearJwtCookie(HttpServletResponse response) {
-        Cookie cookie = new Cookie("JWT", null);
+        Cookie cookie = new Cookie("Token", null);
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
         cookie.setPath("/");

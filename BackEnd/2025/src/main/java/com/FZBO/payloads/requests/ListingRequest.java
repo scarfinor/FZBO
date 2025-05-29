@@ -7,7 +7,7 @@ public class ListingRequest {
     private String style;
     private Boolean fzboStatusActive;
     private Boolean fzboStatusComingSoon;
-    private LocalDate activeDate;
+    private String activeDate;
     private String schoolDistrict;
     private String directionPrefix;
     private String streetSuffix;
@@ -55,11 +55,11 @@ public class ListingRequest {
         this.fzboStatusActive = fzboStatusActive;
     }
 
-    public LocalDate getActiveDate() {
+    public String getActiveDate() {
         return activeDate;
     }
 
-    public void setActiveDate(LocalDate activeDate) {
+    public void setActiveDate(String activeDate) {
         this.activeDate = activeDate;
     }
 

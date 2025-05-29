@@ -89,10 +89,6 @@ public class WebSecurityConfig {
                                 .baseUri("/login/oauth2/code/*"))
                         .successHandler(oauth2SuccessHandler)
                 )
-                .logout(logout -> logout
-                        .logoutUrl("/api/users/logout")
-                        .logoutSuccessHandler((request, response, authentication) -> response.setStatus(HttpServletResponse.SC_OK))
-                )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 

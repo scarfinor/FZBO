@@ -125,7 +125,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
     }
 
     private void setJwtInCookies(HttpServletResponse response, String jwt) {
-        Cookie jwtCookie = new Cookie("JWT", jwt);
+        Cookie jwtCookie = new Cookie("Token", jwt);
         jwtCookie.setHttpOnly(true);
         jwtCookie.setSecure(true);
         jwtCookie.setPath("/");

@@ -29,7 +29,7 @@ public class Listing {
 
     private Boolean fzboStatusComingSoon;
 
-    private LocalDate activeDate;
+    private String activeDate;
 
     @NotBlank(message = "School District must not be blank")
     private String schoolDistrict;
@@ -95,7 +95,7 @@ public class Listing {
 
     public Listing() {};
 
-    public Listing(String style, Boolean fzboStatusActive, Boolean fzboStatusComingSoon, LocalDate activeDate, String schoolDistrict, String directionPrefix, String streetSuffix, String directionSuffix, int listPrice, String publicRemarks, String ownerName, String ownerPhoneNumber, String occupantName, String listingAgreement, String assistingSeller, String specialListingConditions, String occupantType, String streetName, String unitNumber, String streetNumber, String state, String county, String city, String municipality, String zipCode, String fullAddress) {
+    public Listing(String style, Boolean fzboStatusActive, Boolean fzboStatusComingSoon, String activeDate, String schoolDistrict, String directionPrefix, String streetSuffix, String directionSuffix, int listPrice, String publicRemarks, String ownerName, String ownerPhoneNumber, String occupantName, String listingAgreement, String assistingSeller, String specialListingConditions, String occupantType, String streetName, String unitNumber, String streetNumber, String state, String county, String city, String municipality, String zipCode, String fullAddress) {
         this.style = style;
         this.fzboStatusActive = fzboStatusActive;
         this.fzboStatusComingSoon = fzboStatusComingSoon;
@@ -148,11 +148,11 @@ public class Listing {
         this.fzboStatusComingSoon = fzboStatusComingSoon;
     }
 
-    public LocalDate getActiveDate() {
+    public String getActiveDate() {
         return activeDate;
     }
 
-    public void setActiveDate(LocalDate activeDate) {
+    public void setActiveDate(String activeDate) {
         this.activeDate = activeDate;
     }
 
