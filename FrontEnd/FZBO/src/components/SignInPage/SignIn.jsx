@@ -102,6 +102,9 @@ export default function SignIn() {
                             )}
                         </div>
                     </div>
+                    <div className="signUp">
+                        Dont Have an Account? <a href="/SignUp">Sign Up</a>
+                    </div>
                     <button type="submit" className="signIn-form-submit-btn">
                         Submit
                     </button>

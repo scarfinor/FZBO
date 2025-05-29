@@ -11,26 +11,6 @@
     padding: .5rem;
   }
 
-  .signUp {
-    margin-top: -20%;
-    border-bottom: rgba(13, 119, 250, 100) 1px solid;
-    margin-bottom: 15%;
-  }
-
-
-  .signUp a {
-    color: #0d77fa;
-    font-size: 1.1rem;
-    text-decoration: none;
-    align-items: center;
-    transition: color 0.3s ease;
-    padding: .5rem;
-  }
-
-  .signUp a:hover {
-    color: #ffffff;
-  }
-
   .welcome-text {
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: bold;

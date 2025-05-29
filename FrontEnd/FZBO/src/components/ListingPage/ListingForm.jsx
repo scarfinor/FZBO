@@ -157,7 +157,7 @@ export default function ListingForm() {
                             <input
                                 id="activeDate"
                                 name="activeDate"
-                                type="text"
+                                type="date"
                                 placeholder="Select Active Date"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -457,7 +457,7 @@ export default function ListingForm() {
                                 name="listPrice"
                                 type="number"
                                 min="0"
-                                placeholder="Enter List Price"
+                                placeholder="$0.00"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.listPrice}

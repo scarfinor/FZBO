@@ -6,9 +6,6 @@ export default function LandingPage() {
         <div className="landingPage">
             <div className="auth-container">
                     <SignIn />
-                <div className="signUp">
-                Dont Have an Account? <a href="/SignUp">Sign Up</a>
-                </div>
             </div>
         </div>
     );
