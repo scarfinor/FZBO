@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 @RequestMapping("/api/images")
 @RestController
@@ -36,31 +38,41 @@ public class ImageController {
                 .body(uploadImage);
     }
 
+    @PostMapping("/uploadImageList")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<?> uploadImageList(@RequestParam("images") Set<MultipartFile> files) throws IOException {
+        Set<Integer> uploadImageList = new HashSet<>();
+        for (MultipartFile file : files) {
+            int result = imageService.uploadImageToFileDirectory(file);
+            uploadImageList.add(result);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(uploadImageList);
+    }
+
     @GetMapping("/downloadImage/{fileName}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<?> downloadImage(@PathVariable String fileName) throws IOException {
-        byte[] imageData=imageService.downloadImageFromFileSystem(fileName);
+        byte[] imageData = imageService.downloadImageFromFileSystem(fileName);
         String fileType = imageService.getFileExtension(imageRepository.findByName(fileName));
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf(fileType))
                 .body(imageData);
-
     }
 
     @GetMapping("/downloadUserImage/{username}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<?> downloadUserImage(@PathVariable String username) throws IOException {
         User user = userRepository.findByUsername(username);
-        if(user!=null){
+        if (user != null) {
 
             Image userImage = user.getUserImage();
-            byte[] imageData=imageService.downloadImageFromFileSystem(userImage.getName());
+            byte[] imageData = imageService.downloadImageFromFileSystem(userImage.getName());
             String fileType = imageService.getFileExtension(userImage);
             return ResponseEntity.status(HttpStatus.OK)
                     .contentType(MediaType.valueOf(fileType))
                     .body(imageData);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("no image");
-
     }
+
 }
