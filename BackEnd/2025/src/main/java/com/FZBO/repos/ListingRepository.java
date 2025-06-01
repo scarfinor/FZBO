@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ListingRepository extends CrudRepository<Listing, Integer> {
     Boolean existsByFullAddress(String fullAddress);
-    Listing findByFullAddress(String fullAddress);
 }

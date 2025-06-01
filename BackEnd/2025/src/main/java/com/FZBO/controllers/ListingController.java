@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.FZBO.payloads.responses.ListingResponse.getListingResponse;
 
@@ -89,17 +90,17 @@ public class  ListingController {
          return ResponseEntity.ok(listings);
     }
 
-    @GetMapping("/listing/{fullAddress}")
+    @GetMapping("/listing/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN') or hasRole('BUYER') or hasRole('SELLER')")
-    ResponseEntity<?>returnListingFullAddress(Authentication authentication,  @PathVariable("fullAddress") String fullAddress) {
+    ResponseEntity<?>returnListingById(Authentication authentication,  @PathVariable("id") int id) {
         if (authentication == null || !authentication.isAuthenticated()) {
             return new ResponseEntity<>("User is not authenticated", HttpStatus.UNAUTHORIZED);
         }
-        Listing listing = listingRepository.findByFullAddress(fullAddress);
-        if (listing == null) {
+        Optional<Listing> listing = listingRepository.findById(id);
+        if (listing.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(listing);
+        return ResponseEntity.ok(listing.get());
     }
 }
 
