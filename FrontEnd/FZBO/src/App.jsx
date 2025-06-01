@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import LogoutSuccess from "./components/Logout/LogoutSuccess.jsx";
 import ListingForm from "./components/ListingPage/ListingForm.jsx";
 import ListingTable from "./components/ListingPage/ListingTable.jsx";
+import ListingPage from "./components/ListingPage/ListingPage.jsx";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/LogoutSuccess" element={<LogoutSuccess />} />
             <Route path="/ListingForm" element={<ListingForm />} />
             <Route path="/ListingTable" element={<ListingTable />} />
+            <Route path="/ListingPage" element={<ListingPage />} />
         </Routes>
         <Footer />
     </Router>
