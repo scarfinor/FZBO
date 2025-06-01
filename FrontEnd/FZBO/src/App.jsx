@@ -25,7 +25,7 @@ function App() {
             <Route path="/LogoutSuccess" element={<LogoutSuccess />} />
             <Route path="/ListingForm" element={<ListingForm />} />
             <Route path="/ListingTable" element={<ListingTable />} />
-            <Route path="/ListingPage" element={<ListingPage />} />
+            <Route path="/ListingPage/:id" element={<ListingPage />} />
         </Routes>
         <Footer />
     </Router>

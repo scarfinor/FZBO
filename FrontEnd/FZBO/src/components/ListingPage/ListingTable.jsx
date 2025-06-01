@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./ListingTable.scss";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 export default function ListingTable() {
     const [listings, setListings] = useState([]);
@@ -41,7 +42,11 @@ export default function ListingTable() {
                         <td>{listing.style}</td>
                         <td>{listing.fzboStatusActive ? "Yes" : "No"}</td>
                         <td>{listing.activeDate}</td>
-                        <td>{listing.fullAddress}</td>
+                        <td>
+                            <Link to={`/ListingPage/${listing.id}`}>
+                                {listing.fullAddress}
+                            </Link>
+                        </td>
                         <td>${listing.listPrice}</td>
                     </tr>
                 ))}
