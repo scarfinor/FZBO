@@ -88,5 +88,18 @@ public class  ListingController {
             }
          return ResponseEntity.ok(listings);
     }
+
+    @GetMapping("/listing/{fullAddress}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN') or hasRole('BUYER') or hasRole('SELLER')")
+    ResponseEntity<?>returnListingFullAddress(Authentication authentication,  @PathVariable("fullAddress") String fullAddress) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return new ResponseEntity<>("User is not authenticated", HttpStatus.UNAUTHORIZED);
+        }
+        Listing listing = listingRepository.findByFullAddress(fullAddress);
+        if (listing == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(listing);
+    }
 }
 
