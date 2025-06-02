@@ -7,8 +7,9 @@ import {
     IoIosHome,
     IoIosMenu,
 } from "react-icons/io";
-import { FaTimes } from "react-icons/fa";
+import {FaTimes, FaWpforms} from "react-icons/fa";
 import "./Header.scss";
+import {TbTableDashed} from "react-icons/tb";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -28,22 +29,6 @@ export default function Header() {
                     <IoIosMenu />
                 </div>
                 <div className="div-link">
-                    <NavLink to="/SignUp">
-                        <IoIosAddCircleOutline />
-                        Sign Up
-                    </NavLink>
-                    <NavLink to="/ListingForm">
-                        <IoIosAddCircleOutline />
-                        Listing Form
-                    </NavLink>
-                    <NavLink to="/ListingTable">
-                        <IoIosLogIn />
-                        Listing Table
-                    </NavLink>
-                    <NavLink to="/SignIn">
-                        <IoIosLogIn />
-                        Sign In
-                    </NavLink>
                     <NavLink to="/LogoutSuccess">
                         <IoIosLogOut />
                         Log Out
@@ -56,11 +41,11 @@ export default function Header() {
                 </div>
                 <div className="side-menu-container">
                     <NavLink to="/ListingForm">
-                        <IoIosAddCircleOutline />
+                        <FaWpforms />
                         Listing Form
                     </NavLink>
                     <NavLink to="/ListingTable">
-                        <IoIosLogIn />
+                        <TbTableDashed />
                         Listing Table
                     </NavLink>
                     <NavLink to="/SignUp" onClick={toggleMenu}>

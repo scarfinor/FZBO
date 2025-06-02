@@ -11,6 +11,7 @@ import LogoutSuccess from "./components/Logout/LogoutSuccess.jsx";
 import ListingForm from "./components/ListingPage/ListingForm.jsx";
 import ListingTable from "./components/ListingPage/ListingTable.jsx";
 import ListingPage from "./components/ListingPage/ListingPage.jsx";
+import OAuth2Success from "./components/SignInPage/OAuth2Success.jsx";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/ListingForm" element={<ListingForm />} />
             <Route path="/ListingTable" element={<ListingTable />} />
             <Route path="/ListingPage/:id" element={<ListingPage />} />
+            <Route path="/OAuth2Success" element={< OAuth2Success/>} />
         </Routes>
         <Footer />
     </Router>

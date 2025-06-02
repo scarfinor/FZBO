@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import { Form, FormikProvider, useFormik } from "formik";
@@ -51,18 +51,6 @@ export default function SignIn() {
             }
         },
     });
-
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get("token");
-        const firstLogin = urlParams.get("firstLogin");
-
-        if (token) {
-            console.log("OAuth2 Redirect - Token:", token);
-            console.log("OAuth2 Redirect - FirstLogin:", firstLogin);
-            navigate("/");
-        }
-    }, [navigate]);
 
     return (
         <div className="signIn-Form-container">

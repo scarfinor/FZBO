@@ -1,20 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Footer.scss";
-import {IoIosHome} from "react-icons/io";
-import {FaPhoneAlt} from "react-icons/fa";
+import { TbTableDashed } from "react-icons/tb";
+import {FaPhoneAlt, FaWpforms} from "react-icons/fa";
 
 const Footer = () => {
     return (
         <footer>
             <div className="footer-container">
                 <NavLink to="/ListingForm" className="footer-landing">
-                    <IoIosHome />
+                    <FaWpforms />
                     Listing Form
+                </NavLink>
+                <NavLink to="/ListingTable" className="footer-landing">
+                    <TbTableDashed />
+                    Listing Table
                 </NavLink>
                 <NavLink to="813-830-8656" className="footer-landing">
                     <FaPhoneAlt />
-                    Call A Relator
+                    Call A Realtor
                 </NavLink>
             </div>
 
