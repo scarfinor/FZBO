@@ -23,6 +23,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
             user = new User();
             user.setUsername(username);
+            user.setEmail(user.getEmail());
+            user.setFirstName(user.getFirstName());
+            user.setLastName(user.getLastName());
             user.setFirstLogin(true);
             userRepository.save(user);
         }

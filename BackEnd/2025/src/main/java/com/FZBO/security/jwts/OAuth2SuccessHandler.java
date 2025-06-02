@@ -56,22 +56,13 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         String lastName = null;
         EProvider provider;
 
-        switch (registrationId) {
-            case "google":
-                username = oauth2User.getAttribute("sub");
-                firstName = oauth2User.getAttribute("given_name");
-                lastName = oauth2User.getAttribute("family_name");
-                provider = EProvider.GOOGLE;
-                break;
-
-            case "github":
-                username = oauth2User.getAttribute("login");
-                firstName = oauth2User.getAttribute("name");
-                provider = EProvider.GITHUB;
-                break;
-
-            default:
-                throw new IllegalStateException("Unsupported provider: " + registrationId);
+        if (registrationId.equals("google")) {
+            username = oauth2User.getAttribute("sub");
+            firstName = oauth2User.getAttribute("given_name");
+            lastName = oauth2User.getAttribute("family_name");
+            provider = EProvider.GOOGLE;
+        } else {
+            throw new IllegalStateException("Unsupported provider: " + registrationId);
         }
 
         Optional<User> existingUserOpt = Optional.ofNullable(userRepository.findByEmail(email));
@@ -81,15 +72,9 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
             user = existingUserOpt.get();
             user.setFirstLogin(false);
 
-            providerRepository.findByName(provider).ifPresent(p -> {
-                user.getProviders().add(p);
-            });
+            providerRepository.findByName(provider).ifPresent(p -> user.getProviders().add(p));
 
             userRepository.save(user);
-
-            String jwt = generateJwt(authentication);
-            setJwtInCookies(response, jwt);
-            response.sendRedirect("http://localhost:5173/SignInSuccess");
         } else {
             if (email == null) {
                 email = username + "@FZBO.com";
@@ -113,11 +98,13 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
             user.getProviders().add(newProvider);
             user.setRoles(roles);
             userRepository.save(user);
-
-            String jwt = generateJwt(authentication);
-            setJwtInCookies(response, jwt);
-            response.sendRedirect("http://localhost:5173/SignInSuccess");
         }
+
+        String jwt = generateJwt(authentication);
+        setJwtInCookies(response, jwt);
+
+        String redirectUrl = String.format("http://localhost:5173/OAuth2Success?username=%s", user.getUsername());
+        response.sendRedirect(redirectUrl);
     }
 
     private String generateJwt(Authentication authentication) {

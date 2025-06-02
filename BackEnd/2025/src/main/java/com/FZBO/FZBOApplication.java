@@ -49,9 +49,6 @@ public class FZBOApplication {
 	@Bean
 	CommandLineRunner initProviders(ProviderRepository providerRepository){
 		return args -> {
-			if (providerRepository.findByName(EProvider.GITHUB).isEmpty()) {
-				providerRepository.save(new Provider(EProvider.GITHUB));
-			}
 			if (providerRepository.findByName(EProvider.GOOGLE).isEmpty()) {
 				providerRepository.save(new Provider(EProvider.GOOGLE));
 			}
