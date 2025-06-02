@@ -110,7 +110,7 @@ export default function ListingForm() {
               );
 
               if (response.status === 200) {
-                navigate("/ListingPage");
+                navigate("/ListingTable");
               }
             } catch (error) {
               console.error("Listing submission failed:", error.response?.data || error.message);

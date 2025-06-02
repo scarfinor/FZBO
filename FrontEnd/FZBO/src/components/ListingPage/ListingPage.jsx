@@ -20,6 +20,11 @@ export default function ListingPage() {
         };
         getListing();
     }, [id]);
+
+    if (!listing) {
+        return <div>Loading listing...</div>;
+    }
+
     return (
         <div className="listing-page">
             <h1>Listing Details</h1>
