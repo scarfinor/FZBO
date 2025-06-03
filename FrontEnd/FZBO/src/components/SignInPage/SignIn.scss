@@ -1,13 +1,12 @@
 .signIn-Form-container {
   width: 100%;
-  max-width: 400px;
   margin: 5% auto;
-  padding: 5% 8% 9% 5%;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   background-color: #1C3458;
   text-align: center;
   font-family: Arial, sans-serif;
+  padding-top: 5%;
 }
 
 .signIn-form {
@@ -67,7 +66,8 @@
   border-left: white 1px solid;
   border-top: white 1px solid;
   background-color: #1976d2;
-  width: 105%;
+  margin-left: 2%;
+  width: 95%;
 }
 
 .google-icon {
@@ -86,14 +86,16 @@
 
 .signIn-form-submit-btn {
   background-color: #1976d2;
+  width: 98%;
   color: white;
-  margin-top: 10px;
   border-radius: 10px;
   border-bottom: white 1px solid;
   border-right: white 1px solid;
   border-left: white 1px solid;
   border-top: white 1px solid;
-  margin-left: 2.5%;
+  margin-left: 1%;
+  margin-bottom: 5%;
+
 }
 
 .google-btn {
@@ -106,6 +108,5 @@
   border-top: rgb(7, 94, 202) 3px solid;
   border-right: rgb(7, 94, 202) 3px solid;
   border-left: rgb(7, 94, 202) 3px solid;
-  margin-left: 2.5%;
   margin-bottom: 5%;
 }

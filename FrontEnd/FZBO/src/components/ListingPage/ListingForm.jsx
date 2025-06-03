@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Form, FormikProvider, useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
@@ -7,6 +7,15 @@ import axios from "axios";
 
 export default function ListingForm() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fzboUser = localStorage.getItem("fzbo_user");
+        const googleUser = localStorage.getItem("Google_user");
+
+         if (!fzboUser && !googleUser) {
+             navigate("/");
+         }
+    })
 
     const validation = Yup.object({
         fzboStatusActive: Yup.boolean(),
