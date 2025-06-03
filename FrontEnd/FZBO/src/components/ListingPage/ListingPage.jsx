@@ -22,6 +22,7 @@ export default function ListingPage() {
                     withCredentials: true,
                 });
                 setListing(response.data);
+                 console.log(response.data);
             } catch (err) {
                 console.error("Error fetching listing:", err);
                 alert("Error fetching listing.");
@@ -57,6 +58,10 @@ export default function ListingPage() {
                     <div className="detail-row">
                         <span className="label">Address:</span>
                         <span className="value">{listing.fullAddress}</span>
+                    </div>
+                    <div className="detail-row">
+                        <span className="label">FZBO Status:</span>
+                        <span className="value">{listing.fzboStatusActive ? "Active" : listing.activeDate}</span>
                     </div>
                 </div>
             </div>
