@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
+import tempImage  from '../../tempImage/tempImage.jpg';
 import "./ListingPage.scss"
 
 export default function ListingPage() {
     const { id } = useParams();
     const [listing, setListing] = useState(null);
     const navigate = useNavigate();
-
     useEffect(() => {
         const fzboUser = localStorage.getItem("fzbo_user");
         const googleUser = localStorage.getItem("Google_user");
@@ -31,17 +31,36 @@ export default function ListingPage() {
     }, [id]);
 
     if (!listing) {
-        return <div>Loading listing...</div>;
+        return <div>Loading listing failed</div>;
     }
 
     return (
         <div className="listing-page-container">
-            <h1 className="title">Listing Details</h1>
-            <div className="listing-details">
-                <p><strong>Style:</strong> {listing.style}</p>
-                <p><strong>Price:</strong> ${listing.listPrice}</p>
-                <p><strong>Address:</strong> {listing.fullAddress}</p>
+            <div className="listing-header">
+                <h1>{listing.fullAddress}</h1>
+            </div>
+
+            <div className="listing-main">
+                <div className="listing-image-container">
+                    <img src={tempImage} alt="tempImage" />
+                </div>
+
+                <div className="listing-details">
+                    <div className="detail-row">
+                        <span className="label">Style:</span>
+                        <span className="value">{listing.style}</span>
+                    </div>
+                    <div className="detail-row">
+                        <span className="label">Price:</span>
+                        <span className="value">${listing.listPrice.toLocaleString()}</span>
+                    </div>
+                    <div className="detail-row">
+                        <span className="label">Address:</span>
+                        <span className="value">{listing.fullAddress}</span>
+                    </div>
+                </div>
             </div>
         </div>
+
     );
 }

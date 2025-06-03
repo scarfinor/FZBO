@@ -26,7 +26,7 @@ export default function ListingTable() {
                 console.error("Failed to load Listings:", error.response?.data || error.message);
             }
         })();
-    }, []);
+    }, [navigate]);
 
     return (
         <div className="listing-table-container">

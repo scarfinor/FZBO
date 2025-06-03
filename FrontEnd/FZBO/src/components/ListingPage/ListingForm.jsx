@@ -166,7 +166,7 @@ export default function ListingForm() {
                             <input
                                 id="activeDate"
                                 name="activeDate"
-                                type="date"
+                                type="text"
                                 placeholder="Select Active Date"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
