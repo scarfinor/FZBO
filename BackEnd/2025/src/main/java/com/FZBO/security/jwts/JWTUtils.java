@@ -78,8 +78,17 @@ public class JWTUtils {
         response.addCookie(jwtCookie);
     }
 
-    public void clearJwtCookie(HttpServletResponse response) {
+    public void clearTokenJwtCookie(HttpServletResponse response) {
         Cookie cookie = new Cookie("Token", null);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+    }
+
+    public void clearJsessionIdCookie(HttpServletResponse response) {
+        Cookie cookie = new Cookie("JSESSIONID", null);
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
         cookie.setPath("/");
