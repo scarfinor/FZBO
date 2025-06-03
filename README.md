@@ -5,4 +5,4 @@ This application uses Spring Security to authenticate Users.
 Users must have JWT token to access resources.
 
 Single Sign On with OAuth2 
-        Providers: Google and Github
+        Provider: Google
