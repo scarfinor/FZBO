@@ -56,7 +56,7 @@ export default function Header() {
                         <IoIosLogIn />
                         Sign In
                     </NavLink>
-                    <NavLink to="/LogOut" onClick={toggleMenu}>
+                    <NavLink to="/LogoutSuccess" onClick={toggleMenu}>
                         <IoIosLogOut />
                         Log Out
                     </NavLink>

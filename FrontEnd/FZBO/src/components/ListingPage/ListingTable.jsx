@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import "./ListingTable.scss";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function ListingTable() {
     const [listings, setListings] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const fzboUser = localStorage.getItem("fzbo_user");
+        const googleUser = localStorage.getItem("Google_user");
+
+        if (!fzboUser && !googleUser) {
+            navigate("/");
+        }
+
         (async () => {
             try {
                 const response = await axios.get(
@@ -16,7 +24,6 @@ export default function ListingTable() {
                 setListings(response.data);
             } catch (error) {
                 console.error("Failed to load Listings:", error.response?.data || error.message);
-                alert("Listing table failed to load.");
             }
         })();
     }, []);

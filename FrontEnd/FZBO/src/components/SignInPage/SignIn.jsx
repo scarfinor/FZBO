@@ -11,7 +11,8 @@ export default function SignIn() {
         username: Yup.string().max(50).required("Username is required"),
         password: Yup.string()
             .required("Password is required")
-            .min(3, "Password must be at least 3 characters").max(50),
+            .min(3, "Password must be at least 3 characters")
+            .max(50, "Password must be less than 50 characters")
     });
 
     const navigate = useNavigate();
@@ -90,14 +91,15 @@ export default function SignIn() {
                             )}
                         </div>
                     </div>
-                    <div className="signUp">
-                        Dont Have an Account? <a href="/SignUp">Sign Up</a>
-                    </div>
                     <button type="submit" className="signIn-form-submit-btn">
                         Submit
                     </button>
                 </Form>
             </FormikProvider>
+
+            <div className="signUp">
+                Dont Have an Account? <a href="/SignUp">Sign Up</a>
+            </div>
 
             <button className="google-btn" onClick={googleSignIn}>
                 <FcGoogle  className="google-icon"/>
