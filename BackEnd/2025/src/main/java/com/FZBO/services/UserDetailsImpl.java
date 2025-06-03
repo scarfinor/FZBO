@@ -1,6 +1,5 @@
 package com.FZBO.services;
 
-import com.FZBO.models.Image;
 import com.FZBO.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,7 +26,6 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
     private final String firstName;
     private final String lastName;
     private static Boolean firstLogin;
-    private final Image userImage;
 
     @JsonIgnore
     private String password;
@@ -36,26 +34,24 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
 
     private Map<String, Object> attributes;
 
-    public UserDetailsImpl(int id, String username, String firstName, String lastName, Image userImage, String password,
+    public UserDetailsImpl(int id, String username, String firstName, String lastName, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userImage = userImage;
         this.password = password;
         this.authorities = authorities;
     }
 
 
-    public UserDetailsImpl(int id, String username, String email, String firstName, String lastName, Image userImage, Boolean firstLogin,
+    public UserDetailsImpl(int id, String username, String email, String firstName, String lastName, Boolean firstLogin,
                            Collection<? extends GrantedAuthority> authorities, Map<String, Object> attributes) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userImage = userImage;
         UserDetailsImpl.firstLogin = firstLogin;
         this.authorities = authorities;
         this.attributes = attributes;
@@ -72,7 +68,6 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
                 user.getUsername(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getUserImage(),
                 user.getPassword(),
                 authorities);
     }
@@ -91,7 +86,7 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
                 email,
                 oauth2User.getAttribute("given_name"),
                 oauth2User.getAttribute("family_name"),
-                oauth2User.getAttribute("picture"),
+                //oauth2User.getAttribute("picture"),
                 firstLogin,
                 authorities,
                 attributes

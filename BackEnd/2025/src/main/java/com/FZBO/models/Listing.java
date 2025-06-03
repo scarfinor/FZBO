@@ -5,10 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Table(
         name = "listings",
@@ -62,11 +58,6 @@ public class Listing {
     private String specialListingConditions;
 
     private String occupantType;
-
-    @ManyToMany
-    private Set<Image> photos = new HashSet<>();
-
-    private Set<String> photoURLs = new HashSet<>();
 
     @NotBlank(message = "Street name must not be blank")
     private String streetName;
@@ -266,22 +257,6 @@ public class Listing {
 
     public void setOccupantType(String occupantType) {
         this.occupantType = occupantType;
-    }
-
-    public Set<Image> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(Set<Image> photos) {
-        this.photos = photos;
-    }
-
-    public Set<String> getPhotoURLs() {
-        return photoURLs;
-    }
-
-    public void setPhotoURLs(Set<String> photoURLs) {
-        this.photoURLs = photoURLs;
     }
 
     public String getStreetName() {

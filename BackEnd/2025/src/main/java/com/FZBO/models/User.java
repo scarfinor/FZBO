@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -76,11 +75,6 @@ public class User {
 
     @Column(nullable = false)
     private Boolean acceptPrivacyPolicy = false;
-
-    @OneToOne
-    private Image userImage;
-
-    private String userImageURL;
 
     public User() {
     }
@@ -197,19 +191,4 @@ public class User {
         this.acceptPrivacyPolicy = acceptPrivacyPolicy;
     }
 
-    public Image getUserImage() {
-        return userImage;
-    }
-
-    public void setUserImage(Image userImage) {
-        this.userImage = userImage;
-    }
-
-    public String getUserImageURL() {
-        return userImageURL;
-    }
-
-    public void setUserImageURL(String userImageURL) {
-        this.userImageURL = userImageURL;
-    }
 }
