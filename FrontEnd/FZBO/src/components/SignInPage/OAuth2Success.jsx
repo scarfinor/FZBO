@@ -14,7 +14,7 @@ export default function OAuth2Success() {
 
         if (username) {
             localStorage.setItem("Google_user", JSON.stringify({ username }));
-            navigate("/listingTable");
+            navigate("/listingForm");
         } else {
             navigate("/");
         }
